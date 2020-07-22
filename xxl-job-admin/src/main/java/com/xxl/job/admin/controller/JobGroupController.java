@@ -65,7 +65,7 @@ public class JobGroupController {
 			String[] addresss = xxlJobGroup.getAddressList().split(",");
 			for (String item : addresss) {
 				if (item==null || item.trim().length() == 0) {
-					return new ReturnT<>(500, I18nUtil.getString("jobgroup_field_registryList_unvalid") );
+					return new ReturnT<>(500, I18nUtil.getString("jobgroup_field_registryList_invalid") );
 				}
 			}
 		}
@@ -108,7 +108,7 @@ public class JobGroupController {
 			String[] addresss = xxlJobGroup.getAddressList().split(",");
 			for (String item: addresss) {
 				if (item == null || item.trim().length() == 0) {
-					return new ReturnT<>(500, I18nUtil.getString("jobgroup_field_registryList_unvalid"));
+					return new ReturnT<>(500, I18nUtil.getString("jobgroup_field_registryList_invalid"));
 				}
 			}
 		}
