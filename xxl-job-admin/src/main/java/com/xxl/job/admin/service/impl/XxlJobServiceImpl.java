@@ -73,10 +73,10 @@ public class XxlJobServiceImpl implements XxlJobService {
 			return new ReturnT<String>(ReturnT.FAIL_CODE, (I18nUtil.getString("system_please_input")+I18nUtil.getString("jobinfo_field_author")) );
 		}
 		if (ExecutorRouteStrategyEnum.match(jobInfo.getExecutorRouteStrategy(), null) == null) {
-			return new ReturnT<String>(ReturnT.FAIL_CODE, (I18nUtil.getString("jobinfo_field_executorRouteStrategy")+I18nUtil.getString("system_invalid")) );
+			return new ReturnT<String>(ReturnT.FAIL_CODE, (I18nUtil.getString("job_info_field_executorRouteStrategy")+I18nUtil.getString("system_invalid")) );
 		}
 		if (ExecutorBlockStrategyEnum.match(jobInfo.getExecutorBlockStrategy(), null) == null) {
-			return new ReturnT<String>(ReturnT.FAIL_CODE, (I18nUtil.getString("jobinfo_field_executorBlockStrategy")+I18nUtil.getString("system_invalid")) );
+			return new ReturnT<String>(ReturnT.FAIL_CODE, (I18nUtil.getString("job_info_field_executorBlockStrategy")+I18nUtil.getString("system_invalid")) );
 		}
 		if (GlueTypeEnum.match(jobInfo.getGlueType()) == null) {
 			return new ReturnT<String>(ReturnT.FAIL_CODE, (I18nUtil.getString("jobinfo_field_gluetype")+I18nUtil.getString("system_invalid")) );
@@ -147,10 +147,10 @@ public class XxlJobServiceImpl implements XxlJobService {
 			return new ReturnT<String>(ReturnT.FAIL_CODE, (I18nUtil.getString("system_please_input")+I18nUtil.getString("jobinfo_field_author")) );
 		}
 		if (ExecutorRouteStrategyEnum.match(jobInfo.getExecutorRouteStrategy(), null) == null) {
-			return new ReturnT<String>(ReturnT.FAIL_CODE, (I18nUtil.getString("jobinfo_field_executorRouteStrategy")+I18nUtil.getString("system_invalid")) );
+			return new ReturnT<String>(ReturnT.FAIL_CODE, (I18nUtil.getString("job_info_field_executorRouteStrategy")+I18nUtil.getString("system_invalid")) );
 		}
 		if (ExecutorBlockStrategyEnum.match(jobInfo.getExecutorBlockStrategy(), null) == null) {
-			return new ReturnT<String>(ReturnT.FAIL_CODE, (I18nUtil.getString("jobinfo_field_executorBlockStrategy")+I18nUtil.getString("system_invalid")) );
+			return new ReturnT<String>(ReturnT.FAIL_CODE, (I18nUtil.getString("job_info_field_executorBlockStrategy")+I18nUtil.getString("system_invalid")) );
 		}
 
 		// ChildJobId valid

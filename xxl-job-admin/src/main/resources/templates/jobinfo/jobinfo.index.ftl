@@ -123,7 +123,7 @@
                         <div class="col-sm-4"><input type="text" class="form-control" name="jobDesc" placeholder="${I18n.system_please_input}${I18n.jobinfo_field_jobdesc}" maxlength="50" ></div>
 					</div>
                     <div class="form-group">
-                        <label for="firstname" class="col-sm-2 control-label">${I18n.jobinfo_field_executorRouteStrategy}<font color="red">*</font></label>
+                        <label for="firstname" class="col-sm-2 control-label">${I18n.job_info_field_executorRouteStrategy}<font color="red">*</font></label>
                         <div class="col-sm-4">
                             <select class="form-control" name="executorRouteStrategy" >
 							<#list ExecutorRouteStrategyEnum as item>
@@ -147,7 +147,7 @@
                         <div class="col-sm-4"><input type="text" class="form-control" name="executorHandler" placeholder="${I18n.system_please_input}JobHandler" maxlength="100" ></div>
                     </div>
                     <div class="form-group">
-                        <label for="firstname" class="col-sm-2 control-label">${I18n.jobinfo_field_executorBlockStrategy}<font color="red">*</font></label>
+                        <label for="firstname" class="col-sm-2 control-label">${I18n.job_info_field_executorBlockStrategy}<font color="red">*</font></label>
                         <div class="col-sm-4">
                             <select class="form-control" name="executorBlockStrategy" >
 								<#list ExecutorBlockStrategyEnum as item>
@@ -159,9 +159,9 @@
                         <div class="col-sm-4"><input type="text" class="form-control" name="childJobId" placeholder="${I18n.jobinfo_field_childJobId_placeholder}" maxlength="100" ></div>
                     </div>
                     <div class="form-group">
-                        <label for="lastname" class="col-sm-2 control-label">${I18n.jobinfo_field_timeout}<font color="black">*</font></label>
+                        <label for="lastname" class="col-sm-2 control-label">${I18n.job_info_field_timeout}<font color="black">*</font></label>
                         <div class="col-sm-4"><input type="text" class="form-control" name="executorTimeout" placeholder="${I18n.jobinfo_field_executorTimeout_placeholder}" maxlength="6" ></div>
-                        <label for="lastname" class="col-sm-2 control-label">${I18n.jobinfo_field_executorFailRetryCount}<font color="black">*</font></label>
+                        <label for="lastname" class="col-sm-2 control-label">${I18n.job_info_field_executorFailRetryCount}<font color="black">*</font></label>
                         <div class="col-sm-4"><input type="text" class="form-control" name="executorFailRetryCount" placeholder="${I18n.jobinfo_field_executorFailRetryCount_placeholder}" maxlength="4" ></div>
                     </div>
 					<div class="form-group">
@@ -308,7 +308,7 @@ exit 0
                         <div class="col-sm-4"><input type="text" class="form-control" name="jobDesc" placeholder="${I18n.system_please_input}${I18n.jobinfo_field_jobdesc}" maxlength="50" ></div>
                     </div>
                     <div class="form-group">
-                        <label for="firstname" class="col-sm-2 control-label">${I18n.jobinfo_field_executorRouteStrategy}<font color="red">*</font></label>
+                        <label for="firstname" class="col-sm-2 control-label">${I18n.job_info_field_executorRouteStrategy}<font color="red">*</font></label>
                         <div class="col-sm-4">
                             <select class="form-control" name="executorRouteStrategy" >
 							<#list ExecutorRouteStrategyEnum as item>
@@ -332,7 +332,7 @@ exit 0
                         <div class="col-sm-4"><input type="text" class="form-control" name="executorHandler" placeholder="${I18n.system_please_input}JobHandler" maxlength="100" ></div>
                     </div>
                     <div class="form-group">
-                        <label for="firstname" class="col-sm-2 control-label">${I18n.jobinfo_field_executorBlockStrategy}<font color="red">*</font></label>
+                        <label for="firstname" class="col-sm-2 control-label">${I18n.job_info_field_executorBlockStrategy}<font color="red">*</font></label>
                         <div class="col-sm-4">
                             <select class="form-control" name="executorBlockStrategy" >
 							<#list ExecutorBlockStrategyEnum as item>
@@ -344,9 +344,9 @@ exit 0
                         <div class="col-sm-4"><input type="text" class="form-control" name="childJobId" placeholder="${I18n.jobinfo_field_childJobId_placeholder}" maxlength="100" ></div>
                     </div>
                     <div class="form-group">
-                        <label for="lastname" class="col-sm-2 control-label">${I18n.jobinfo_field_timeout}<font color="black">*</font></label>
+                        <label for="lastname" class="col-sm-2 control-label">${I18n.job_info_field_timeout}<font color="black">*</font></label>
                         <div class="col-sm-4"><input type="text" class="form-control" name="executorTimeout" placeholder="${I18n.jobinfo_field_executorTimeout_placeholder}" maxlength="6" ></div>
-                        <label for="lastname" class="col-sm-2 control-label">${I18n.jobinfo_field_executorFailRetryCount}<font color="black">*</font></label>
+                        <label for="lastname" class="col-sm-2 control-label">${I18n.job_info_field_executorFailRetryCount}<font color="black">*</font></label>
                         <div class="col-sm-4"><input type="text" class="form-control" name="executorFailRetryCount" placeholder="${I18n.jobinfo_field_executorFailRetryCount_placeholder}" maxlength="4" ></div>
                     </div>
                     <div class="form-group">
