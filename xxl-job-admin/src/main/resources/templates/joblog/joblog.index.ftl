@@ -41,7 +41,7 @@
 	            </div>
 	            <div class="col-xs-2">
 	              	<div class="input-group">
-	                	<span class="input-group-addon">${I18n.jobinfo_job}</span>
+	                	<span class="input-group-addon">${I18n.job_info_job}</span>
                         <select class="form-control" id="jobId" paramVal="<#if jobInfo?exists>${jobInfo.id}</#if>" >
                             <option value="0" >${I18n.system_all}</option>
 						</select>
@@ -131,7 +131,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label"">${I18n.jobinfo_job}：</label>
+                        <label class="col-sm-3 control-label"">${I18n.job_info_job}：</label>
                         <div class="col-sm-9">
                             <input type="text" class="form-control jobIdText" readonly >
                             <input type="hidden" name="jobId" >

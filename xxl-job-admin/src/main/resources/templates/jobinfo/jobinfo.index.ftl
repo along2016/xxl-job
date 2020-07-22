@@ -17,7 +17,7 @@
 	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
-			<h1>${I18n.jobinfo_name}</h1>
+			<h1>${I18n.job_info_name}</h1>
 		</section>
 		
 		<!-- Main content -->

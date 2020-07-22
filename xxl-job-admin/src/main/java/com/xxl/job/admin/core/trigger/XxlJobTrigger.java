@@ -53,9 +53,9 @@ public class XxlJobTrigger {
 
         // sharding param
         int[] shardingParam = null;
-        if (executorShardingParam!=null){
+        if (executorShardingParam != null){
             String[] shardingArr = executorShardingParam.split("/");
-            if (shardingArr.length==2 && isNumeric(shardingArr[0]) && isNumeric(shardingArr[1])) {
+            if (shardingArr.length == 2 && isNumeric(shardingArr[0]) && isNumeric(shardingArr[1])) {
                 shardingParam = new int[2];
                 shardingParam[0] = Integer.valueOf(shardingArr[0]);
                 shardingParam[1] = Integer.valueOf(shardingArr[1]);
@@ -78,7 +78,7 @@ public class XxlJobTrigger {
 
     private static boolean isNumeric(String str){
         try {
-            int result = Integer.valueOf(str);
+            Integer.valueOf(str);
             return true;
         } catch (NumberFormatException e) {
             return false;
@@ -96,9 +96,13 @@ public class XxlJobTrigger {
     private static void processTrigger(XxlJobGroup group, XxlJobInfo jobInfo, int finalFailRetryCount, TriggerTypeEnum triggerType, int index, int total){
 
         // param
-        ExecutorBlockStrategyEnum blockStrategy = ExecutorBlockStrategyEnum.match(jobInfo.getExecutorBlockStrategy(), ExecutorBlockStrategyEnum.SERIAL_EXECUTION);  // block strategy
-        ExecutorRouteStrategyEnum executorRouteStrategyEnum = ExecutorRouteStrategyEnum.match(jobInfo.getExecutorRouteStrategy(), null);    // route strategy
-        String shardingParam = (ExecutorRouteStrategyEnum.SHARDING_BROADCAST==executorRouteStrategyEnum)?String.valueOf(index).concat("/").concat(String.valueOf(total)):null;
+        // block strategy
+        ExecutorBlockStrategyEnum blockStrategy =
+                ExecutorBlockStrategyEnum.match(jobInfo.getExecutorBlockStrategy(), ExecutorBlockStrategyEnum.SERIAL_EXECUTION);
+        // route strategy
+        ExecutorRouteStrategyEnum executorRouteStrategyEnum = ExecutorRouteStrategyEnum.match(jobInfo.getExecutorRouteStrategy(), null);
+        String shardingParam = (ExecutorRouteStrategyEnum.SHARDING_BROADCAST == executorRouteStrategyEnum) ?
+                String.valueOf(index).concat("/").concat(String.valueOf(total)) : null;
 
         // 1、save log-id
         XxlJobLog jobLog = new XxlJobLog();
@@ -126,7 +130,7 @@ public class XxlJobTrigger {
         // 3、init address
         String address = null;
         ReturnT<String> routeAddressResult = null;
-        if (group.getRegistryList()!=null && !group.getRegistryList().isEmpty()) {
+        if (group.getRegistryList() != null && !group.getRegistryList().isEmpty()) {
             if (ExecutorRouteStrategyEnum.SHARDING_BROADCAST == executorRouteStrategyEnum) {
                 if (index < group.getRegistryList().size()) {
                     address = group.getRegistryList().get(index);
@@ -140,23 +144,23 @@ public class XxlJobTrigger {
                 }
             }
         } else {
-            routeAddressResult = new ReturnT<String>(ReturnT.FAIL_CODE, I18nUtil.getString("jobconf_trigger_address_empty"));
+            routeAddressResult = new ReturnT<>(ReturnT.FAIL_CODE, I18nUtil.getString("job_conf_trigger_address_empty"));
         }
 
         // 4、trigger remote executor
-        ReturnT<String> triggerResult = null;
+        ReturnT<String> triggerResult;
         if (address != null) {
             triggerResult = runExecutor(triggerParam, address);
         } else {
-            triggerResult = new ReturnT<String>(ReturnT.FAIL_CODE, null);
+            triggerResult = new ReturnT<>(ReturnT.FAIL_CODE, null);
         }
 
         // 5、collection trigger info
         StringBuffer triggerMsgSb = new StringBuffer();
-        triggerMsgSb.append(I18nUtil.getString("jobconf_trigger_type")).append("：").append(triggerType.getTitle());
-        triggerMsgSb.append("<br>").append(I18nUtil.getString("jobconf_trigger_admin_address")).append("：").append(IpUtil.getIp());
-        triggerMsgSb.append("<br>").append(I18nUtil.getString("jobconf_trigger_exe_regtype")).append("：")
-                .append( (group.getAddressType() == 0)?I18nUtil.getString("jobgroup_field_addressType_0"):I18nUtil.getString("jobgroup_field_addressType_1") );
+        triggerMsgSb.append(I18nUtil.getString("job_conf_trigger_type")).append("：").append(triggerType.getTitle());
+        triggerMsgSb.append("<br>").append(I18nUtil.getString("job_conf_trigger_admin_address")).append("：").append(IpUtil.getIp());
+        triggerMsgSb.append("<br>").append(I18nUtil.getString("job_conf_trigger_exe_reg_type")).append("：")
+                .append( (group.getAddressType() == 0)?I18nUtil.getString("job_group_field_addressType_0"):I18nUtil.getString("job_group_field_addressType_1") );
         triggerMsgSb.append("<br>").append(I18nUtil.getString("jobconf_trigger_exe_regaddress")).append("：").append(group.getRegistryList());
         triggerMsgSb.append("<br>").append(I18nUtil.getString("jobinfo_field_executorRouteStrategy")).append("：").append(executorRouteStrategyEnum.getTitle());
         if (shardingParam != null) {
@@ -175,7 +179,6 @@ public class XxlJobTrigger {
         jobLog.setExecutorParam(jobInfo.getExecutorParam());
         jobLog.setExecutorShardingParam(shardingParam);
         jobLog.setExecutorFailRetryCount(finalFailRetryCount);
-        //jobLog.setTriggerTime();
         jobLog.setTriggerCode(triggerResult.getCode());
         jobLog.setTriggerMsg(triggerMsgSb.toString());
         XxlJobAdminConfig.getAdminConfig().getXxlJobLogDao().updateTriggerInfo(jobLog);
@@ -190,13 +193,13 @@ public class XxlJobTrigger {
      * @return
      */
     public static ReturnT<String> runExecutor(TriggerParam triggerParam, String address){
-        ReturnT<String> runResult = null;
+        ReturnT<String> runResult;
         try {
             ExecutorBiz executorBiz = XxlJobScheduler.getExecutorBiz(address);
             runResult = executorBiz.run(triggerParam);
         } catch (Exception e) {
             logger.error(">>>>>>>>>>> xxl-job trigger error, please check if the executor[{}] is running.", address, e);
-            runResult = new ReturnT<String>(ReturnT.FAIL_CODE, ThrowableUtil.toString(e));
+            runResult = new ReturnT<>(ReturnT.FAIL_CODE, ThrowableUtil.toString(e));
         }
 
         StringBuffer runResultSB = new StringBuffer(I18nUtil.getString("jobconf_trigger_run") + "：");
