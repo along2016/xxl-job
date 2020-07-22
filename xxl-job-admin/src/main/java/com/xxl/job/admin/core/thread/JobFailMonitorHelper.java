@@ -41,17 +41,15 @@ public class JobFailMonitorHelper {
 
 			@Override
 			public void run() {
-
 				// monitor
 				while (!toStop) {
 					try {
-
 						List<Long> failLogIds = XxlJobAdminConfig.getAdminConfig().getXxlJobLogDao().findFailJobLogIds(1000);
 						if (failLogIds!=null && !failLogIds.isEmpty()) {
 							for (long failLogId: failLogIds) {
-
 								// lock log
-								int lockRet = XxlJobAdminConfig.getAdminConfig().getXxlJobLogDao().updateAlarmStatus(failLogId, 0, -1);
+								int lockRet = XxlJobAdminConfig.getAdminConfig().getXxlJobLogDao()
+										.updateAlarmStatus(failLogId, 0, -1);
 								if (lockRet < 1) {
 									continue;
 								}
@@ -67,24 +65,23 @@ public class JobFailMonitorHelper {
 								}
 
 								// 2、fail alarm monitor
-								int newAlarmStatus = 0;		// 告警状态：0-默认、-1=锁定状态、1-无需告警、2-告警成功、3-告警失败
+								// 告警状态：0-默认、-1=锁定状态、1-无需告警、2-告警成功、3-告警失败
+								int newAlarmStatus;
 								if (info!=null && info.getAlarmEmail()!=null && info.getAlarmEmail().trim().length()>0) {
-									boolean alarmResult = true;
+									boolean alarmResult;
 									try {
 										alarmResult = failAlarm(info, log);
 									} catch (Exception e) {
 										alarmResult = false;
 										logger.error(e.getMessage(), e);
 									}
-									newAlarmStatus = alarmResult?2:3;
+									newAlarmStatus = alarmResult ? 2 : 3;
 								} else {
 									newAlarmStatus = 1;
 								}
-
 								XxlJobAdminConfig.getAdminConfig().getXxlJobLogDao().updateAlarmStatus(failLogId, -1, newAlarmStatus);
 							}
 						}
-
 						TimeUnit.SECONDS.sleep(10);
 					} catch (Exception e) {
 						if (!toStop) {
@@ -92,9 +89,7 @@ public class JobFailMonitorHelper {
 						}
 					}
 				}
-
 				logger.info(">>>>>>>>>>> xxl-job, job fail monitor thread stop");
-
 			}
 		});
 		monitorThread.setDaemon(true);
@@ -113,10 +108,11 @@ public class JobFailMonitorHelper {
 		}
 	}
 
-
 	// ---------------------- alarm ----------------------
 
-	// email alarm template
+	/**
+	 * email alarm template
+	 */
 	private static final String mailBodyTemplate = "<h5>" + I18nUtil.getString("jobconf_monitor_detail") + "：</span>" +
 			"<table border=\"1\" cellpadding=\"3\" style=\"border-collapse:collapse; width:80%;\" >\n" +
 			"   <thead style=\"font-weight: bold;color: #ffffff;background-color: #ff8c00;\" >" +
@@ -171,7 +167,6 @@ public class JobFailMonitorHelper {
 
 			Set<String> emailSet = new HashSet<String>(Arrays.asList(info.getAlarmEmail().split(",")));
 			for (String email: emailSet) {
-
 				// make mail
 				try {
 					MimeMessage mimeMessage = XxlJobAdminConfig.getAdminConfig().getMailSender().createMimeMessage();
@@ -185,17 +180,11 @@ public class JobFailMonitorHelper {
 					XxlJobAdminConfig.getAdminConfig().getMailSender().send(mimeMessage);
 				} catch (Exception e) {
 					logger.error(">>>>>>>>>>> xxl-job, job fail alarm email send error, JobLogId:{}", jobLog.getId(), e);
-
 					alarmResult = false;
 				}
-
 			}
 		}
-
 		// do something, custom alarm strategy, such as sms
-
-
 		return alarmResult;
 	}
-
 }
