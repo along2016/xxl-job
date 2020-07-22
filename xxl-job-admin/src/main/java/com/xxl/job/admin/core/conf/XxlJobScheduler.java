@@ -38,9 +38,8 @@ import java.util.concurrent.ConcurrentMap;
 public class XxlJobScheduler implements InitializingBean, DisposableBean {
     private static final Logger logger = LoggerFactory.getLogger(XxlJobScheduler.class);
 
-
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet() {
         // init i18n
         initI18n();
 
@@ -78,15 +77,15 @@ public class XxlJobScheduler implements InitializingBean, DisposableBean {
         stopRpcProvider();
     }
 
-    // ---------------------- I18n ----------------------
-
     private void initI18n(){
         for (ExecutorBlockStrategyEnum item:ExecutorBlockStrategyEnum.values()) {
             item.setTitle(I18nUtil.getString("jobconf_block_".concat(item.name())));
         }
     }
 
-    // ---------------------- admin rpc provider (no server version) ----------------------
+    /**
+     * admin rpc provider (no server version)
+     */
     private static ServletServerHandler servletServerHandler;
     private void initRpcProvider(){
         // init
@@ -146,5 +145,4 @@ public class XxlJobScheduler implements InitializingBean, DisposableBean {
         executorBizRepository.put(address, executorBiz);
         return executorBiz;
     }
-
 }

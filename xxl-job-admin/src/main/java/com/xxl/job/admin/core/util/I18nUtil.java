@@ -54,16 +54,16 @@ public class I18nUtil {
     }
 
     /**
-     * get mult val of i18n mult key, as json
+     * get multi val of i18n multi key, as json
      *
      * @param keys
      * @return
      */
-    public static String getMultString(String... keys) {
-        Map<String, String> map = new HashMap<String, String>();
+    public static String getMultiString(String... keys) {
+        Map<String, String> map = new HashMap<>();
 
         Properties prop = loadI18nProp();
-        if (keys!=null && keys.length>0) {
+        if (keys != null && keys.length > 0) {
             for (String key: keys) {
                 map.put(key, prop.getProperty(key));
             }
@@ -76,5 +76,4 @@ public class I18nUtil {
         String json = JacksonUtil.writeValueAsString(map);
         return json;
     }
-
 }

@@ -26,11 +26,13 @@ public class XxlJobAdminConfig implements InitializingBean{
     }
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet() {
         adminConfig = this;
     }
 
-    // conf
+    /**
+     * conf
+     */
     @Value("${xxl.job.i18n}")
     private String i18n;
 
@@ -39,8 +41,6 @@ public class XxlJobAdminConfig implements InitializingBean{
 
     @Value("${spring.mail.username}")
     private String emailUserName;
-
-    // dao, service
 
     @Resource
     private XxlJobLogDao xxlJobLogDao;
@@ -56,7 +56,6 @@ public class XxlJobAdminConfig implements InitializingBean{
     private JavaMailSender mailSender;
     @Resource
     private DataSource dataSource;
-
 
     public String getI18n() {
         return i18n;

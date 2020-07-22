@@ -12,7 +12,7 @@ import freemarker.template.TemplateHashModel;
  */
 public class FtlUtil {
 
-    private static BeansWrapper wrapper = new BeansWrapperBuilder(Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS).build();     //BeansWrapper.getDefaultInstance();
+    private static BeansWrapper wrapper = new BeansWrapperBuilder(Configuration.DEFAULT_INCOMPATIBLE_IMPROVEMENTS).build();
 
     public static TemplateHashModel generateStaticModel(String packageName) {
         try {

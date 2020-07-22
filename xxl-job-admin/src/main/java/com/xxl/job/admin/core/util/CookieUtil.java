@@ -11,9 +11,14 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class CookieUtil {
 
-	// 默认缓存时间,单位/秒, 2H
+	/**
+	 * 默认缓存时间,单位/秒, 2H
+	 */
 	private static final int COOKIE_MAX_AGE = Integer.MAX_VALUE;
-	// 保存路径,根路径
+
+	/**
+	 * 保存路径,根路径
+	 */
 	private static final String COOKIE_PATH = "/";
 	
 	/**
@@ -25,7 +30,7 @@ public class CookieUtil {
 	 * @param ifRemember 
 	 */
 	public static void set(HttpServletResponse response, String key, String value, boolean ifRemember) {
-		int age = ifRemember?COOKIE_MAX_AGE:-1;
+		int age = ifRemember ? COOKIE_MAX_AGE : -1;
 		set(response, key, value, null, COOKIE_PATH, age, true);
 	}
 
