@@ -305,18 +305,11 @@ public class XxlJobServiceImpl implements XxlJobService {
 	private static final String TRIGGER_CHART_DATA_CACHE = "trigger_chart_data_cache";
 	@Override
 	public ReturnT<Map<String, Object>> chartInfo(Date startDate, Date endDate) {
-		/*// get cache
-		String cacheKey = TRIGGER_CHART_DATA_CACHE + "_" + startDate.getTime() + "_" + endDate.getTime();
-		Map<String, Object> chartInfo = (Map<String, Object>) LocalCacheUtil.get(cacheKey);
-		if (chartInfo != null) {
-			return new ReturnT<Map<String, Object>>(chartInfo);
-		}*/
-
 		// process
-		List<String> triggerDayList = new ArrayList<String>();
-		List<Integer> triggerDayCountRunningList = new ArrayList<Integer>();
-		List<Integer> triggerDayCountSucList = new ArrayList<Integer>();
-		List<Integer> triggerDayCountFailList = new ArrayList<Integer>();
+		List<String> triggerDayList = new ArrayList<>();
+		List<Integer> triggerDayCountRunningList = new ArrayList<>();
+		List<Integer> triggerDayCountSucList = new ArrayList<>();
+		List<Integer> triggerDayCountFailList = new ArrayList<>();
 		int triggerCountRunningTotal = 0;
 		int triggerCountSucTotal = 0;
 		int triggerCountFailTotal = 0;
@@ -348,7 +341,7 @@ public class XxlJobServiceImpl implements XxlJobService {
             }
 		}
 
-		Map<String, Object> result = new HashMap<String, Object>();
+		Map<String, Object> result = new HashMap<>(7);
 		result.put("triggerDayList", triggerDayList);
 		result.put("triggerDayCountRunningList", triggerDayCountRunningList);
 		result.put("triggerDayCountSucList", triggerDayCountSucList);
@@ -357,11 +350,7 @@ public class XxlJobServiceImpl implements XxlJobService {
 		result.put("triggerCountRunningTotal", triggerCountRunningTotal);
 		result.put("triggerCountSucTotal", triggerCountSucTotal);
 		result.put("triggerCountFailTotal", triggerCountFailTotal);
-
-		/*// set cache
-		LocalCacheUtil.set(cacheKey, result, 60*1000);     // cache 60s*/
-
-		return new ReturnT<Map<String, Object>>(result);
+		return new ReturnT<>(result);
 	}
 
 }

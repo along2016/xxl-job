@@ -14,7 +14,6 @@
 	<!-- left -->
 	<@netCommon.commonLeft "jobinfo" />
 	
-	<!-- Content Wrapper. Contains page content -->
 	<div class="content-wrapper">
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
@@ -23,7 +22,6 @@
 		
 		<!-- Main content -->
 	    <section class="content">
-	    
 	    	<div class="row">
 	    		<div class="col-xs-3">
 	              	<div class="input-group">
@@ -38,15 +36,16 @@
                 <div class="col-xs-1">
                     <div class="input-group">
                         <select class="form-control" id="triggerStatus" >
-                            <option value="-1" >${I18n.system_all}</option>
-                            <option value="0" >${I18n.jobinfo_opt_stop}</option>
-                            <option value="1" >${I18n.jobinfo_opt_start}</option>
+                            <option value="-1">${I18n.system_all}</option>
+                            <option value="0">${I18n.jobinfo_opt_stop}</option>
+                            <option value="1">${I18n.jobinfo_opt_start}</option>
                         </select>
                     </div>
                 </div>
                 <div class="col-xs-2">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="jobDesc" autocomplete="on" placeholder="${I18n.system_please_input}${I18n.jobinfo_field_jobdesc}" >
+                        <input type="text" class="form-control" id="jobDesc" autocomplete="on"
+                               placeholder="${I18n.system_please_input}${I18n.jobinfo_field_jobdesc}" >
                     </div>
                 </div>
                 <div class="col-xs-2">
@@ -67,12 +66,9 @@
 	            </div>
           	</div>
 	    	
-			<div class="row">
+			<div class="row" style="margin-top: 10px;">
 				<div class="col-xs-12">
 					<div class="box">
-			            <#--<div class="box-header hide">
-			            	<h3 class="box-title">调度列表</h3>
-			            </div>-->
 			            <div class="box-body" >
 			              	<table id="job_list" class="table table-bordered table-striped" width="100%" >
 				                <thead>
@@ -238,17 +234,9 @@ print "${I18n.jobinfo_script_location}：", sys.argv[0]
 print "${I18n.jobinfo_field_executorparam}：", sys.argv[1]
 print "${I18n.jobinfo_shard_index}：", sys.argv[2]
 print "${I18n.jobinfo_shard_total}：", sys.argv[3]
-<#--for i in range(1, len(sys.argv)):
-	time.sleep(1)
-	print "参数", i, sys.argv[i]-->
 
 print "Good bye!"
 exit(0)
-<#--
-import logging
-logging.basicConfig(level=logging.DEBUG)
-logging.info("脚本文件：" + sys.argv[0])
--->
 </textarea>
 <#--这里有问题，新建一个运行模式为 php 的任务后，GLUE 中没有下边的 php 代码-->
 <textarea class="glueSource_php" style="display:none;" >
@@ -276,9 +264,6 @@ console.log("${I18n.jobinfo_script_location}: " + arguments[1])
 console.log("${I18n.jobinfo_field_executorparam}: " + arguments[2])
 console.log("${I18n.jobinfo_shard_index}: " + arguments[3])
 console.log("${I18n.jobinfo_shard_total}: " + arguments[4])
-<#--for (var i = 2; i < arguments.length; i++){
-	console.log("参数 %s = %s", (i-1), arguments[i]);
-}-->
 
 console.log("Good bye!")
 process.exit(0)
@@ -404,7 +389,9 @@ exit 0
                     <div class="form-group">
                         <label for="firstname" class="col-sm-2 control-label">${I18n.jobinfo_field_executorparam}<font color="black">*</font></label>
                         <div class="col-sm-10">
-                            <textarea class="textarea form-control" name="executorParam" placeholder="${I18n.system_please_input}${I18n.jobinfo_field_executorparam}" maxlength="512" style="height: 63px; line-height: 1.2;"></textarea>
+                            <textarea class="textarea form-control" name="executorParam"
+                                      placeholder="${I18n.system_please_input}${I18n.jobinfo_field_executorparam}"
+                                      maxlength="512" style="height: 63px; line-height: 1.2;"></textarea>
                         </div>
                     </div>
                     <hr>

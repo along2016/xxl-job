@@ -44,9 +44,12 @@ public class JobInfoController {
 	public String index(HttpServletRequest request, Model model, @RequestParam(required = false, defaultValue = "-1") int jobGroup) {
 
 		// 枚举-字典
-		model.addAttribute("ExecutorRouteStrategyEnum", ExecutorRouteStrategyEnum.values());	// 路由策略-列表
-		model.addAttribute("GlueTypeEnum", GlueTypeEnum.values());								// Glue类型-字典
-		model.addAttribute("ExecutorBlockStrategyEnum", ExecutorBlockStrategyEnum.values());	// 阻塞处理策略-字典
+		// 路由策略-列表
+		model.addAttribute("ExecutorRouteStrategyEnum", ExecutorRouteStrategyEnum.values());
+		// Glue类型-字典
+		model.addAttribute("GlueTypeEnum", GlueTypeEnum.values());
+		// 阻塞处理策略-字典
+		model.addAttribute("ExecutorBlockStrategyEnum", ExecutorBlockStrategyEnum.values());
 
 		// 执行器列表
 		List<XxlJobGroup> jobGroupList_all =  xxlJobGroupDao.findAll();
@@ -59,7 +62,6 @@ public class JobInfoController {
 
 		model.addAttribute("JobGroupList", jobGroupList);
 		model.addAttribute("jobGroup", jobGroup);
-
 		return "jobinfo/jobinfo.index";
 	}
 
@@ -83,6 +85,7 @@ public class JobInfoController {
 		}
 		return jobGroupList;
 	}
+
 	public static void validPermission(HttpServletRequest request, int jobGroup) {
 		XxlJobUser loginUser = (XxlJobUser) request.getAttribute(LoginService.LOGIN_IDENTITY_KEY);
 		if (!loginUser.validPermission(jobGroup)) {
@@ -131,7 +134,6 @@ public class JobInfoController {
 	
 	@RequestMapping("/trigger")
 	@ResponseBody
-	//@PermissionLimit(limit = false)
 	public ReturnT<String> triggerJob(int id, String executorParam) {
 		// force cover job param
 		if (executorParam == null) {
@@ -141,5 +143,4 @@ public class JobInfoController {
 		JobTriggerPoolHelper.trigger(id, TriggerTypeEnum.MANUAL, -1, null, executorParam);
 		return ReturnT.SUCCESS;
 	}
-	
 }
