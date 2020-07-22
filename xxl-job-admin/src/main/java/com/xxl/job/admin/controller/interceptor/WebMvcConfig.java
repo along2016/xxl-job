@@ -25,5 +25,4 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         registry.addInterceptor(cookieInterceptor).addPathPatterns("/**");
         super.addInterceptors(registry);
     }
-
 }

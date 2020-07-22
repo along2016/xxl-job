@@ -154,7 +154,7 @@ public class XxlJobTrigger {
         // 5、collection trigger info
         StringBuffer triggerMsgSb = new StringBuffer();
         triggerMsgSb.append(I18nUtil.getString("jobconf_trigger_type")).append("：").append(triggerType.getTitle());
-        triggerMsgSb.append("<br>").append(I18nUtil.getString("jobconf_trigger_admin_adress")).append("：").append(IpUtil.getIp());
+        triggerMsgSb.append("<br>").append(I18nUtil.getString("jobconf_trigger_admin_address")).append("：").append(IpUtil.getIp());
         triggerMsgSb.append("<br>").append(I18nUtil.getString("jobconf_trigger_exe_regtype")).append("：")
                 .append( (group.getAddressType() == 0)?I18nUtil.getString("jobgroup_field_addressType_0"):I18nUtil.getString("jobgroup_field_addressType_1") );
         triggerMsgSb.append("<br>").append(I18nUtil.getString("jobconf_trigger_exe_regaddress")).append("：").append(group.getRegistryList());

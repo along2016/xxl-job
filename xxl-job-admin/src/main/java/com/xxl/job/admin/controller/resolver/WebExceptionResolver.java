@@ -27,7 +27,6 @@ public class WebExceptionResolver implements HandlerExceptionResolver {
 	@Override
 	public ModelAndView resolveException(HttpServletRequest request,
 			HttpServletResponse response, Object handler, Exception ex) {
-
 		if (!(ex instanceof XxlJobException)) {
 			logger.error("WebExceptionResolver:{}", ex);
 		}
@@ -54,11 +53,9 @@ public class WebExceptionResolver implements HandlerExceptionResolver {
 			}
 			return mv;
 		} else {
-
 			mv.addObject("exceptionMsg", errorResult.getMsg());
 			mv.setViewName("/common/common.exception");
 			return mv;
 		}
 	}
-	
 }

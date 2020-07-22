@@ -110,7 +110,7 @@ public class UserController {
         // avoid opt login seft
         XxlJobUser loginUser = (XxlJobUser) request.getAttribute(LoginService.LOGIN_IDENTITY_KEY);
         if (loginUser.getUsername().equals(xxlJobUser.getUsername())) {
-            return new ReturnT<>(ReturnT.FAIL.getCode(), I18nUtil.getString("user_update_loginuser_limit"));
+            return new ReturnT<>(ReturnT.FAIL.getCode(), I18nUtil.getString("user_update_loginUser_limit"));
         }
 
         // valid password
@@ -138,7 +138,7 @@ public class UserController {
         // avoid opt login seft
         XxlJobUser loginUser = (XxlJobUser) request.getAttribute(LoginService.LOGIN_IDENTITY_KEY);
         if (loginUser.getId() == id) {
-            return new ReturnT<>(ReturnT.FAIL.getCode(), I18nUtil.getString("user_update_loginuser_limit"));
+            return new ReturnT<>(ReturnT.FAIL.getCode(), I18nUtil.getString("user_update_loginUser_limit"));
         }
 
         xxlJobUserDao.delete(id);

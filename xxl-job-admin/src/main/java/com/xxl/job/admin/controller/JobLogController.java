@@ -223,7 +223,7 @@ public class JobLogController {
 			// 清理所有日志数据
 			clearBeforeNum = 0;
 		} else {
-			return new ReturnT<>(ReturnT.FAIL_CODE, I18nUtil.getString("joblog_clean_type_unvalid"));
+			return new ReturnT<>(ReturnT.FAIL_CODE, I18nUtil.getString("joblog_clean_type_invalid"));
 		}
 
 		xxlJobLogDao.clearLog(jobGroup, jobId, clearBeforeTime, clearBeforeNum);
