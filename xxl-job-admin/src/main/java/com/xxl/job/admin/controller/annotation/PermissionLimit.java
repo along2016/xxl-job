@@ -24,6 +24,6 @@ public @interface PermissionLimit {
 	 *
 	 * @return
 	 */
-	boolean adminuser() default false;
+	boolean adminUser() default false;
 
 }
