@@ -347,7 +347,7 @@ $(function() {
         }, 
         messages : {  
             jobDesc : {
-            	required : I18n.system_please_input + I18n.jobinfo_field_jobdesc
+            	required : I18n.system_please_input + I18n.job_info_field_job_desc
             },
             jobCron : {
             	required : I18n.system_please_input + "Cron"
@@ -509,7 +509,7 @@ $(function() {
 		},
 		messages : {
 			jobDesc : {
-                required : I18n.system_please_input + I18n.jobinfo_field_jobdesc
+                required : I18n.system_please_input + I18n.job_info_field_job_desc
 			},
 			jobCron : {
 				required : I18n.system_please_input + "Cron"

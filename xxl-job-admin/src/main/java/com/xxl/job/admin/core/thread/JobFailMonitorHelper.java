@@ -117,9 +117,9 @@ public class JobFailMonitorHelper {
 			"<table border=\"1\" cellpadding=\"3\" style=\"border-collapse:collapse; width:80%;\" >\n" +
 			"   <thead style=\"font-weight: bold;color: #ffffff;background-color: #ff8c00;\" >" +
 			"      <tr>\n" +
-			"         <td width=\"20%\" >"+ I18nUtil.getString("jobinfo_field_jobgroup") +"</td>\n" +
-			"         <td width=\"10%\" >"+ I18nUtil.getString("jobinfo_field_id") +"</td>\n" +
-			"         <td width=\"20%\" >"+ I18nUtil.getString("jobinfo_field_jobdesc") +"</td>\n" +
+			"         <td width=\"20%\" >"+ I18nUtil.getString("job_info_field_job_group") +"</td>\n" +
+			"         <td width=\"10%\" >"+ I18nUtil.getString("job_info_field_id") +"</td>\n" +
+			"         <td width=\"20%\" >"+ I18nUtil.getString("job_info_field_job_desc") +"</td>\n" +
 			"         <td width=\"10%\" >"+ I18nUtil.getString("jobconf_monitor_alarm_title") +"</td>\n" +
 			"         <td width=\"40%\" >"+ I18nUtil.getString("jobconf_monitor_alarm_content") +"</td>\n" +
 			"      </tr>\n" +

@@ -25,7 +25,7 @@
 	    	<div class="row">
 	    		<div class="col-xs-3">
 	              	<div class="input-group">
-	                	<span class="input-group-addon">${I18n.jobinfo_field_jobgroup}</span>
+	                	<span class="input-group-addon">${I18n.job_info_field_job_group}</span>
                 		<select class="form-control" id="jobGroup" >
                 			<#list JobGroupList as group>
                 				<option value="${group.id}" <#if jobGroup==group.id>selected</#if> >${group.title}</option>
@@ -45,7 +45,7 @@
                 <div class="col-xs-2">
                     <div class="input-group">
                         <input type="text" class="form-control" id="jobDesc" autocomplete="on"
-                               placeholder="${I18n.system_please_input}${I18n.jobinfo_field_jobdesc}" >
+                               placeholder="${I18n.system_please_input}${I18n.job_info_field_job_desc}" >
                     </div>
                 </div>
                 <div class="col-xs-2">
@@ -62,7 +62,7 @@
 	            	<button class="btn btn-block btn-info" id="searchBtn">${I18n.system_search}</button>
 	            </div>
 	            <div class="col-xs-1">
-	            	<button class="btn btn-block btn-success add" type="button">${I18n.jobinfo_field_add}</button>
+	            	<button class="btn btn-block btn-success add" type="button">${I18n.job_info_field_add}</button>
 	            </div>
           	</div>
 	    	
@@ -73,10 +73,10 @@
 			              	<table id="job_list" class="table table-bordered table-striped" width="100%" >
 				                <thead>
 					            	<tr>
-					            		<th name="id" >${I18n.jobinfo_field_id}</th>
-					                	<th name="jobGroup" >${I18n.jobinfo_field_jobgroup}</th>
-					                  	<th name="jobDesc" >${I18n.jobinfo_field_jobdesc}</th>
-                                        <th name="glueType" >${I18n.jobinfo_field_gluetype}</th>
+					            		<th name="id" >${I18n.job_info_field_id}</th>
+					                	<th name="jobGroup" >${I18n.job_info_field_job_group}</th>
+					                  	<th name="jobDesc" >${I18n.job_info_field_job_desc}</th>
+                                        <th name="glueType" >${I18n.job_info_field_glue_type}</th>
 					                  	<th name="executorParam" >${I18n.jobinfo_field_executorparam}</th>
                                         <th name="jobCron" >Cron</th>
 					                  	<th name="addTime" >addTime</th>
@@ -106,12 +106,12 @@
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
-            	<h4 class="modal-title" >${I18n.jobinfo_field_add}</h4>
+            	<h4 class="modal-title" >${I18n.job_info_field_add}</h4>
          	</div>
          	<div class="modal-body">
 				<form class="form-horizontal form" role="form" >
 					<div class="form-group">
-						<label for="firstname" class="col-sm-2 control-label">${I18n.jobinfo_field_jobgroup}<font color="red">*</font></label>
+						<label for="firstname" class="col-sm-2 control-label">${I18n.job_info_field_job_group}<font color="red">*</font></label>
 						<div class="col-sm-4">
 							<select class="form-control" name="jobGroup" >
 		            			<#list JobGroupList as group>
@@ -119,8 +119,8 @@
 		            			</#list>
 		                  	</select>
 						</div>
-                        <label for="lastname" class="col-sm-2 control-label">${I18n.jobinfo_field_jobdesc}<font color="red">*</font></label>
-                        <div class="col-sm-4"><input type="text" class="form-control" name="jobDesc" placeholder="${I18n.system_please_input}${I18n.jobinfo_field_jobdesc}" maxlength="50" ></div>
+                        <label for="lastname" class="col-sm-2 control-label">${I18n.job_info_field_job_desc}<font color="red">*</font></label>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="jobDesc" placeholder="${I18n.system_please_input}${I18n.job_info_field_job_desc}" maxlength="50" ></div>
 					</div>
                     <div class="form-group">
                         <label for="firstname" class="col-sm-2 control-label">${I18n.job_info_field_executorRouteStrategy}<font color="red">*</font></label>
@@ -135,7 +135,7 @@
                         <div class="col-sm-4"><input type="text" class="form-control" name="jobCron" placeholder="${I18n.system_please_input}Cron" maxlength="128" ></div>
                     </div>
                     <div class="form-group">
-                        <label for="firstname" class="col-sm-2 control-label">${I18n.jobinfo_field_gluetype}<font color="red">*</font></label>
+                        <label for="firstname" class="col-sm-2 control-label">${I18n.job_info_field_glue_type}<font color="red">*</font></label>
                         <div class="col-sm-4">
                             <select class="form-control glueType" name="glueType" >
 								<#list GlueTypeEnum as item>
@@ -296,7 +296,7 @@ exit 0
          	<div class="modal-body">
 				<form class="form-horizontal form" role="form" >
 					<div class="form-group">
-                        <label for="firstname" class="col-sm-2 control-label">${I18n.jobinfo_field_jobgroup}<font color="red">*</font></label>
+                        <label for="firstname" class="col-sm-2 control-label">${I18n.job_info_field_job_group}<font color="red">*</font></label>
                         <div class="col-sm-4">
                             <select class="form-control" name="jobGroup" >
 							<#list JobGroupList as group>
@@ -304,8 +304,8 @@ exit 0
 							</#list>
                             </select>
                         </div>
-                        <label for="lastname" class="col-sm-2 control-label">${I18n.jobinfo_field_jobdesc}<font color="red">*</font></label>
-                        <div class="col-sm-4"><input type="text" class="form-control" name="jobDesc" placeholder="${I18n.system_please_input}${I18n.jobinfo_field_jobdesc}" maxlength="50" ></div>
+                        <label for="lastname" class="col-sm-2 control-label">${I18n.job_info_field_job_desc}<font color="red">*</font></label>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="jobDesc" placeholder="${I18n.system_please_input}${I18n.job_info_field_job_desc}" maxlength="50" ></div>
                     </div>
                     <div class="form-group">
                         <label for="firstname" class="col-sm-2 control-label">${I18n.job_info_field_executorRouteStrategy}<font color="red">*</font></label>
@@ -320,7 +320,7 @@ exit 0
                         <div class="col-sm-4"><input type="text" class="form-control" name="jobCron" placeholder="${I18n.system_please_input}Cron" maxlength="128" ></div>
                     </div>
                     <div class="form-group">
-                        <label for="firstname" class="col-sm-2 control-label">${I18n.jobinfo_field_gluetype}<font color="red">*</font></label>
+                        <label for="firstname" class="col-sm-2 control-label">${I18n.job_info_field_glue_type}<font color="red">*</font></label>
                         <div class="col-sm-4">
                             <select class="form-control glueType" name="glueType" disabled >
 							<#list GlueTypeEnum as item>

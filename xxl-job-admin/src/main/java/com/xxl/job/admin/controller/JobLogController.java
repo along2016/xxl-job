@@ -62,7 +62,7 @@ public class JobLogController {
 		if (jobId > 0) {
 			XxlJobInfo jobInfo = xxlJobInfoDao.loadById(jobId);
 			if (jobInfo == null) {
-				throw new RuntimeException(I18nUtil.getString("jobinfo_field_id") + I18nUtil.getString("system_invalid"));
+				throw new RuntimeException(I18nUtil.getString("job_info_field_id") + I18nUtil.getString("system_invalid"));
 			}
 			model.addAttribute("jobInfo", jobInfo);
 			// valid permission
