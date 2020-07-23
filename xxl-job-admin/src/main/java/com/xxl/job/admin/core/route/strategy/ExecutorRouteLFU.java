@@ -65,7 +65,6 @@ public class ExecutorRouteLFU extends ExecutorRouter {
                 return o1.getValue().compareTo(o2.getValue());
             }
         });
-
         Map.Entry<String, Integer> addressItem = lfuItemList.get(0);
         addressItem.setValue(addressItem.getValue() + 1);
         return addressItem.getKey();

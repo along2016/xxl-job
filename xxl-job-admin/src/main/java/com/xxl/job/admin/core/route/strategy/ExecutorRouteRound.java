@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentMap;
  */
 public class ExecutorRouteRound extends ExecutorRouter {
 
-    private static ConcurrentMap<Integer, Integer> routeCountEachJob = new ConcurrentHashMap<Integer, Integer>();
+    private static ConcurrentMap<Integer, Integer> routeCountEachJob = new ConcurrentHashMap<>();
     private static long CACHE_VALID_TIME = 0;
     private static int count(int jobId) {
         // cache clear
@@ -25,15 +25,15 @@ public class ExecutorRouteRound extends ExecutorRouter {
 
         // count++
         Integer count = routeCountEachJob.get(jobId);
-        count = (count==null || count>1000000)?(new Random().nextInt(100)):++count;  // 初始化时主动Random一次，缓解首次压力
+        // 初始化时主动Random一次，缓解首次压力
+        count = (count == null || count > 1000000) ? (new Random().nextInt(100)) : ++count;
         routeCountEachJob.put(jobId, count);
         return count;
     }
 
     @Override
     public ReturnT<String> route(TriggerParam triggerParam, List<String> addressList) {
-        String address = addressList.get(count(triggerParam.getJobId())%addressList.size());
-        return new ReturnT<String>(address);
+        String address = addressList.get(count(triggerParam.getJobId()) % addressList.size());
+        return new ReturnT<>(address);
     }
-
 }
