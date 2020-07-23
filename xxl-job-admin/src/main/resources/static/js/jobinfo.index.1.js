@@ -353,7 +353,7 @@ $(function() {
             	required : I18n.system_please_input + "Cron"
             },
             author : {
-            	required : I18n.system_please_input + I18n.jobinfo_field_author
+            	required : I18n.system_please_input + I18n.job_info_field_author
             },
             executorTimeout : {
                 digits: I18n.system_please_input + I18n.system_digits
@@ -515,7 +515,7 @@ $(function() {
 				required : I18n.system_please_input + "Cron"
 			},
 			author : {
-				required : I18n.system_please_input + I18n.jobinfo_field_author
+				required : I18n.system_please_input + I18n.job_info_field_author
 			},
             executorTimeout : {
                 digits: I18n.system_please_input + I18n.system_digits

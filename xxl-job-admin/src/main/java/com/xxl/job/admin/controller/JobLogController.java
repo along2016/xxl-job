@@ -53,7 +53,7 @@ public class JobLogController {
 		// filter group
 		List<XxlJobGroup> jobGroupList = JobInfoController.filterJobGroupByRole(request, jobGroupList_all);
 		if (jobGroupList==null || jobGroupList.size()==0) {
-			throw new XxlJobException(I18nUtil.getString("jobgroup_empty"));
+			throw new XxlJobException(I18nUtil.getString("job_group_empty"));
 		}
 
 		model.addAttribute("JobGroupList", jobGroupList);
@@ -162,10 +162,10 @@ public class JobLogController {
 		XxlJobLog log = xxlJobLogDao.load(id);
 		XxlJobInfo jobInfo = xxlJobInfoDao.loadById(log.getJobId());
 		if (jobInfo==null) {
-			return new ReturnT<>(500, I18nUtil.getString("job_info_glue_jobId_invalid"));
+			return new ReturnT<>(ReturnT.FAIL_CODE, I18nUtil.getString("job_info_glue_jobId_invalid"));
 		}
 		if (ReturnT.SUCCESS_CODE != log.getTriggerCode()) {
-			return new ReturnT<>(500, I18nUtil.getString("joblog_kill_log_limit"));
+			return new ReturnT<>(ReturnT.FAIL_CODE, I18nUtil.getString("job_log_kill_log_limit"));
 		}
 
 		// request of kill
@@ -175,17 +175,17 @@ public class JobLogController {
 			runResult = executorBiz.kill(jobInfo.getId());
 		} catch (Exception e) {
 			logger.error(e.getMessage(), e);
-			runResult = new ReturnT<>(500, e.getMessage());
+			runResult = new ReturnT<>(ReturnT.FAIL_CODE, e.getMessage());
 		}
 
 		if (ReturnT.SUCCESS_CODE == runResult.getCode()) {
 			log.setHandleCode(ReturnT.FAIL_CODE);
-			log.setHandleMsg( I18nUtil.getString("joblog_kill_log_byman")+":" + (runResult.getMsg()!=null?runResult.getMsg():""));
+			log.setHandleMsg( I18nUtil.getString("job_log_kill_log_byMan")+":" + (runResult.getMsg()!=null?runResult.getMsg():""));
 			log.setHandleTime(new Date());
 			xxlJobLogDao.updateHandleInfo(log);
 			return new ReturnT<>(runResult.getMsg());
 		} else {
-			return new ReturnT<>(500, runResult.getMsg());
+			return new ReturnT<>(ReturnT.FAIL_CODE, runResult.getMsg());
 		}
 	}
 
@@ -223,7 +223,7 @@ public class JobLogController {
 			// 清理所有日志数据
 			clearBeforeNum = 0;
 		} else {
-			return new ReturnT<>(ReturnT.FAIL_CODE, I18nUtil.getString("joblog_clean_type_invalid"));
+			return new ReturnT<>(ReturnT.FAIL_CODE, I18nUtil.getString("job_log_clean_type_invalid"));
 		}
 
 		xxlJobLogDao.clearLog(jobGroup, jobId, clearBeforeTime, clearBeforeNum);

@@ -40,7 +40,7 @@ $(function() {
 			layer.open({
 				title: I18n.system_tips,
                 btn: [ I18n.system_ok],
-				content: I18n.system_please_input + I18n.jobinfo_glue_remark ,
+				content: I18n.system_please_input + I18n.job_info_glue_remark ,
 				icon: '2'
 			});
 			return;
@@ -49,7 +49,7 @@ $(function() {
 			layer.open({
 				title: I18n.system_tips ,
                 btn: [ I18n.system_ok ],
-				content: I18n.jobinfo_glue_remark_limit ,
+				content: I18n.job_info_glue_remark_limit ,
 				icon: '2'
 			});
 			return;

@@ -58,14 +58,14 @@ public class JobCodeController {
 	public ReturnT<String> save(Model model, int id, String glueSource, String glueRemark) {
 		// valid
 		if (glueRemark==null) {
-			return new ReturnT<>(500, (I18nUtil.getString("system_please_input") + I18nUtil.getString("jobinfo_glue_remark")) );
+			return new ReturnT<>(ReturnT.FAIL_CODE, (I18nUtil.getString("system_please_input") + I18nUtil.getString("job_info_glue_remark")) );
 		}
 		if (glueRemark.length() < 4 || glueRemark.length() > 100) {
-			return new ReturnT<>(500, I18nUtil.getString("jobinfo_glue_remark_limit"));
+			return new ReturnT<>(ReturnT.FAIL_CODE, I18nUtil.getString("job_info_glue_remark_limit"));
 		}
 		XxlJobInfo exists_jobInfo = xxlJobInfoDao.loadById(id);
 		if (exists_jobInfo == null) {
-			return new ReturnT<>(500, I18nUtil.getString("job_info_glue_jobId_invalid"));
+			return new ReturnT<>(ReturnT.FAIL_CODE, I18nUtil.getString("job_info_glue_jobId_invalid"));
 		}
 		
 		// update new code
