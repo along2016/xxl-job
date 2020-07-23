@@ -25,5 +25,4 @@ public class GlueJobHandler extends IJobHandler {
 		XxlJobLogger.log("----------- glue.version:"+ glueUpdateTime +" -----------");
 		return jobHandler.execute(param);
 	}
-
 }

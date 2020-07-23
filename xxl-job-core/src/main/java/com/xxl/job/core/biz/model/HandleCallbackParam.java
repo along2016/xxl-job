@@ -52,5 +52,4 @@ public class HandleCallbackParam implements Serializable {
                 ", executeResult=" + executeResult +
                 '}';
     }
-
 }

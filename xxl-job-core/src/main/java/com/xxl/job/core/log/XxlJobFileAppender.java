@@ -14,10 +14,11 @@ import java.util.Date;
  */
 public class XxlJobFileAppender {
 	private static Logger logger = LoggerFactory.getLogger(XxlJobFileAppender.class);
-	
-	// for JobThread (support log for child thread of job handler)
-	//public static ThreadLocal<String> contextHolder = new ThreadLocal<String>();
-	public static final InheritableThreadLocal<String> contextHolder = new InheritableThreadLocal<String>();
+
+	/**
+	 * for JobThread (support log for child thread of job handler)
+	 */
+	public static final InheritableThreadLocal<String> contextHolder = new InheritableThreadLocal<>();
 
 
 	/**
@@ -71,7 +72,8 @@ public class XxlJobFileAppender {
 	public static String makeLogFileName(Date triggerDate, long logId) {
 
 		// filePath/yyyy-MM-dd
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");	// avoid concurrent problem, can not be static
+		// avoid concurrent problem, can not be static
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		File logFilePath = new File(getLogPath(), sdf.format(triggerDate));
 		if (!logFilePath.exists()) {
 			logFilePath.mkdir();
@@ -131,7 +133,6 @@ public class XxlJobFileAppender {
 				}
 			}
 		}
-		
 	}
 
 	/**
@@ -159,10 +160,10 @@ public class XxlJobFileAppender {
 		try {
 			//reader = new LineNumberReader(new FileReader(logFile));
 			reader = new LineNumberReader(new InputStreamReader(new FileInputStream(logFile), "utf-8"));
-			String line = null;
+			String line;
 
 			while ((line = reader.readLine())!=null) {
-				toLineNum = reader.getLineNumber();		// [from, to], start as 1
+				toLineNum = reader.getLineNumber();
 				if (toLineNum >= fromLineNum) {
 					logContentBuffer.append(line).append("\n");
 				}
@@ -182,13 +183,6 @@ public class XxlJobFileAppender {
 		// result
 		LogResult logResult = new LogResult(fromLineNum, toLineNum, logContentBuffer.toString(), false);
 		return logResult;
-
-		/*
-        // it will return the number of characters actually skipped
-        reader.skip(Long.MAX_VALUE);
-        int maxLineNum = reader.getLineNumber();
-        maxLineNum++;	// 最大行号
-        */
 	}
 
 	/**
@@ -202,7 +196,7 @@ public class XxlJobFileAppender {
 			reader = new BufferedReader(new InputStreamReader(new FileInputStream(logFile), "utf-8"));
 			if (reader != null) {
 				StringBuilder sb = new StringBuilder();
-				String line = null;
+				String line;
 				while ((line = reader.readLine()) != null) {
 					sb.append(line).append("\n");
 				}
@@ -221,5 +215,4 @@ public class XxlJobFileAppender {
 		}
 		return null;
 	}
-
 }

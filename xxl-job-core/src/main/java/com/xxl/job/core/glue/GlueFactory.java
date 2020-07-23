@@ -29,7 +29,6 @@ public class GlueFactory {
 		}
 	}
 
-
 	/**
 	 * groovy class loader
 	 */
@@ -61,6 +60,7 @@ public class GlueFactory {
 		}
 		throw new IllegalArgumentException(">>>>>>>>>>> xxl-glue, loadNewInstance error, instance is null");
 	}
+
 	private Class<?> getCodeSourceClass(String codeSource){
 		try {
 			// md5
@@ -86,5 +86,4 @@ public class GlueFactory {
 	public void injectService(Object instance) {
 		// do something
 	}
-
 }

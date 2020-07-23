@@ -170,5 +170,4 @@ public class ExecutorBizImpl implements ExecutorBiz {
         ReturnT<String> pushResult = jobThread.pushTriggerQueue(triggerParam);
         return pushResult;
     }
-
 }
