@@ -106,9 +106,9 @@ $(function() {
                                 // status
                                 var start_stop_div = "";
                                 if (1 == row.triggerStatus ) {
-                                    start_stop_div = '<li><a href="javascript:void(0);" class="job_operate" _type="job_pause" >'+ I18n.jobinfo_opt_stop +'</a></li>\n';
+                                    start_stop_div = '<li><a href="javascript:void(0);" class="job_operate" _type="job_pause" >'+ I18n.job_info_opt_stop +'</a></li>\n';
                                 } else {
-                                    start_stop_div = '<li><a href="javascript:void(0);" class="job_operate" _type="job_resume" >'+ I18n.jobinfo_opt_start +'</a></li>\n';
+                                    start_stop_div = '<li><a href="javascript:void(0);" class="job_operate" _type="job_resume" >'+ I18n.job_info_opt_start +'</a></li>\n';
                                 }
 
                                 // log url
@@ -132,9 +132,9 @@ $(function() {
                                     '       <span class="sr-only">Toggle Dropdown</span>\n' +
                                     '     </button>\n' +
                                     '     <ul class="dropdown-menu" role="menu" _id="'+ row.id +'" >\n' +
-                                    '       <li><a href="javascript:void(0);" class="job_trigger" >'+ I18n.jobinfo_opt_run +'</a></li>\n' +
-                                    '       <li><a href="'+ logHref +'">'+ I18n.jobinfo_opt_log +'</a></li>\n' +
-                                    '       <li><a href="javascript:void(0);" class="job_registryinfo" >' + I18n.jobinfo_opt_registryinfo + '</a></li>\n' +
+                                    '       <li><a href="javascript:void(0);" class="job_trigger" >'+ I18n.job_info_opt_run +'</a></li>\n' +
+                                    '       <li><a href="'+ logHref +'">'+ I18n.job_info_opt_log +'</a></li>\n' +
+                                    '       <li><a href="javascript:void(0);" class="job_registryinfo" >' + I18n.job_info_opt_registry_info + '</a></li>\n' +
                                     '       <li class="divider"></li>\n' +
                                     start_stop_div +
                                     codeBtn +
@@ -197,11 +197,11 @@ $(function() {
 
 		var type = $(this).attr("_type");
 		if ("job_pause" == type) {
-			typeName = I18n.jobinfo_opt_stop ;
+			typeName = I18n.job_info_opt_stop ;
 			url = base_url + "/jobinfo/stop";
 			needFresh = true;
 		} else if ("job_resume" == type) {
-			typeName = I18n.jobinfo_opt_start ;
+			typeName = I18n.job_info_opt_start ;
 			url = base_url + "/jobinfo/start";
 			needFresh = true;
 		} else if ("job_del" == type) {
@@ -266,9 +266,9 @@ $(function() {
                 if (data.code == 200) {
                     $('#jobTriggerModal').modal('hide');
 
-                    layer.msg( I18n.jobinfo_opt_run + I18n.system_success );
+                    layer.msg( I18n.job_info_opt_run + I18n.system_success );
                 } else {
-                    layer.msg( data.msg || I18n.jobinfo_opt_run + I18n.system_fail );
+                    layer.msg( data.msg || I18n.job_info_opt_run + I18n.system_fail );
                 }
             }
         });
@@ -303,7 +303,7 @@ $(function() {
                 html += '</center>';
 
                 layer.open({
-                    title: I18n.jobinfo_opt_registryinfo ,
+                    title: I18n.job_info_opt_registry_info,
                     btn: [ I18n.system_ok ],
                     content: html
                 });

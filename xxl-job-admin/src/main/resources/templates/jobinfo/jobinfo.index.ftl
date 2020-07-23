@@ -37,8 +37,8 @@
                     <div class="input-group">
                         <select class="form-control" id="triggerStatus" >
                             <option value="-1">${I18n.system_all}</option>
-                            <option value="0">${I18n.jobinfo_opt_stop}</option>
-                            <option value="1">${I18n.jobinfo_opt_start}</option>
+                            <option value="0">${I18n.job_info_opt_stop}</option>
+                            <option value="1">${I18n.job_info_opt_start}</option>
                         </select>
                     </div>
                 </div>
@@ -156,13 +156,13 @@
                             </select>
                         </div>
                         <label for="lastname" class="col-sm-2 control-label">${I18n.job_info_field_childJobId}<font color="black">*</font></label>
-                        <div class="col-sm-4"><input type="text" class="form-control" name="childJobId" placeholder="${I18n.jobinfo_field_childJobId_placeholder}" maxlength="100" ></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="childJobId" placeholder="${I18n.job_info_field_childJobId_placeholder}" maxlength="100" ></div>
                     </div>
                     <div class="form-group">
                         <label for="lastname" class="col-sm-2 control-label">${I18n.job_info_field_timeout}<font color="black">*</font></label>
-                        <div class="col-sm-4"><input type="text" class="form-control" name="executorTimeout" placeholder="${I18n.jobinfo_field_executorTimeout_placeholder}" maxlength="6" ></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="executorTimeout" placeholder="${I18n.job_info_field_executorTimeout_placeholder}" maxlength="6" ></div>
                         <label for="lastname" class="col-sm-2 control-label">${I18n.job_info_field_executorFailRetryCount}<font color="black">*</font></label>
-                        <div class="col-sm-4"><input type="text" class="form-control" name="executorFailRetryCount" placeholder="${I18n.jobinfo_field_executorFailRetryCount_placeholder}" maxlength="4" ></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="executorFailRetryCount" placeholder="${I18n.job_info_field_executorFailRetryCount_placeholder}" maxlength="4" ></div>
                     </div>
 					<div class="form-group">
                         <label for="lastname" class="col-sm-2 control-label">${I18n.job_info_field_author}<font color="red">*</font></label>
@@ -208,10 +208,10 @@ public class DemoGlueJobHandler extends IJobHandler {
 #!/bin/bash
 echo "xxl-job: hello shell"
 
-echo "${I18n.jobinfo_script_location}：$0"
+echo "${I18n.job_info_script_location}：$0"
 echo "${I18n.job_info_field_executor_param}：$1"
-echo "${I18n.jobinfo_shard_index} = $2"
-echo "${I18n.jobinfo_shard_total} = $3"
+echo "${I18n.job_info_shard_index} = $2"
+echo "${I18n.job_info_shard_total} = $3"
 <#--echo "参数数量：$#"
 for param in $*
 do
@@ -230,10 +230,10 @@ import sys
 
 print "xxl-job: hello python"
 
-print "${I18n.jobinfo_script_location}：", sys.argv[0]
+print "${I18n.job_info_script_location}：", sys.argv[0]
 print "${I18n.job_info_field_executor_param}：", sys.argv[1]
-print "${I18n.jobinfo_shard_index}：", sys.argv[2]
-print "${I18n.jobinfo_shard_total}：", sys.argv[3]
+print "${I18n.job_info_shard_index}：", sys.argv[2]
+print "${I18n.job_info_shard_total}：", sys.argv[3]
 
 print "Good bye!"
 exit(0)
@@ -244,10 +244,10 @@ exit(0)
 
     echo "xxl-job: hello php  \n";
 
-    echo "${I18n.jobinfo_script_location}：$argv[0]  \n";
+    echo "${I18n.job_info_script_location}：$argv[0]  \n";
     echo "${I18n.job_info_field_executor_param}：$argv[1]  \n";
-    echo "${I18n.jobinfo_shard_index} = $argv[2]  \n";
-    echo "${I18n.jobinfo_shard_total} = $argv[3]  \n";
+    echo "${I18n.job_info_shard_index} = $argv[2]  \n";
+    echo "${I18n.job_info_shard_total} = $argv[3]  \n";
 
     echo "Good bye!  \n";
     exit(0);
@@ -260,10 +260,10 @@ console.log("xxl-job: hello nodejs")
 
 var arguments = process.argv
 
-console.log("${I18n.jobinfo_script_location}: " + arguments[1])
+console.log("${I18n.job_info_script_location}: " + arguments[1])
 console.log("${I18n.job_info_field_executor_param}: " + arguments[2])
-console.log("${I18n.jobinfo_shard_index}: " + arguments[3])
-console.log("${I18n.jobinfo_shard_total}: " + arguments[4])
+console.log("${I18n.job_info_shard_index}: " + arguments[3])
+console.log("${I18n.job_info_shard_total}: " + arguments[4])
 
 console.log("Good bye!")
 process.exit(0)
@@ -271,11 +271,11 @@ process.exit(0)
 <textarea class="glueSource_powershell" style="display:none;" >
 Write-Host "xxl-job: hello powershell"
 
-Write-Host "${I18n.jobinfo_script_location}: " $MyInvocation.MyCommand.Definition
+Write-Host "${I18n.job_info_script_location}: " $MyInvocation.MyCommand.Definition
 Write-Host "${I18n.job_info_field_executor_param}: "
 	if ($args.Count -gt 2) { $args[0..($args.Count-3)] }
-Write-Host "${I18n.jobinfo_shard_index}: " $args[$args.Count-2]
-Write-Host "${I18n.jobinfo_shard_total}: " $args[$args.Count-1]
+Write-Host "${I18n.job_info_shard_index}: " $args[$args.Count-2]
+Write-Host "${I18n.job_info_shard_total}: " $args[$args.Count-1]
 
 Write-Host "Good bye!"
 exit 0
@@ -341,13 +341,13 @@ exit 0
                             </select>
                         </div>
                         <label for="lastname" class="col-sm-2 control-label">${I18n.job_info_field_childJobId}<font color="black">*</font></label>
-                        <div class="col-sm-4"><input type="text" class="form-control" name="childJobId" placeholder="${I18n.jobinfo_field_childJobId_placeholder}" maxlength="100" ></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="childJobId" placeholder="${I18n.job_info_field_childJobId_placeholder}" maxlength="100" ></div>
                     </div>
                     <div class="form-group">
                         <label for="lastname" class="col-sm-2 control-label">${I18n.job_info_field_timeout}<font color="black">*</font></label>
-                        <div class="col-sm-4"><input type="text" class="form-control" name="executorTimeout" placeholder="${I18n.jobinfo_field_executorTimeout_placeholder}" maxlength="6" ></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="executorTimeout" placeholder="${I18n.job_info_field_executorTimeout_placeholder}" maxlength="6" ></div>
                         <label for="lastname" class="col-sm-2 control-label">${I18n.job_info_field_executorFailRetryCount}<font color="black">*</font></label>
-                        <div class="col-sm-4"><input type="text" class="form-control" name="executorFailRetryCount" placeholder="${I18n.jobinfo_field_executorFailRetryCount_placeholder}" maxlength="4" ></div>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="executorFailRetryCount" placeholder="${I18n.job_info_field_executorFailRetryCount_placeholder}" maxlength="4" ></div>
                     </div>
                     <div class="form-group">
                         <label for="lastname" class="col-sm-2 control-label">${I18n.job_info_field_author}<font color="red">*</font></label>
@@ -382,7 +382,7 @@ exit 0
     <div class="modal-dialog ">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" >${I18n.jobinfo_opt_run}</h4>
+                <h4 class="modal-title" >${I18n.job_info_opt_run}</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal form" role="form" >
