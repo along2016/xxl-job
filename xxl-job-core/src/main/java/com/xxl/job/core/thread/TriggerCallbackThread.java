@@ -32,7 +32,7 @@ public class TriggerCallbackThread {
     /**
      * job results callback queue
      */
-    private LinkedBlockingQueue<HandleCallbackParam> callBackQueue = new LinkedBlockingQueue<HandleCallbackParam>();
+    private LinkedBlockingQueue<HandleCallbackParam> callBackQueue = new LinkedBlockingQueue<>();
     public static void pushCallBack(HandleCallbackParam callback){
         getInstance().callBackQueue.add(callback);
         logger.debug(">>>>>>>>>>> xxl-job, push callback request, logId:{}", callback.getLogId());
@@ -57,16 +57,14 @@ public class TriggerCallbackThread {
 
             @Override
             public void run() {
-
                 // normal callback
                 while(!toStop){
                     try {
                         HandleCallbackParam callback = getInstance().callBackQueue.take();
                         if (callback != null) {
-
                             // callback list param
                             List<HandleCallbackParam> callbackParamList = new ArrayList<HandleCallbackParam>();
-                            int drainToNum = getInstance().callBackQueue.drainTo(callbackParamList);
+                            getInstance().callBackQueue.drainTo(callbackParamList);
                             callbackParamList.add(callback);
 
                             // callback, will retry if error
@@ -84,7 +82,7 @@ public class TriggerCallbackThread {
                 // last callback
                 try {
                     List<HandleCallbackParam> callbackParamList = new ArrayList<HandleCallbackParam>();
-                    int drainToNum = getInstance().callBackQueue.drainTo(callbackParamList);
+                    getInstance().callBackQueue.drainTo(callbackParamList);
                     if (callbackParamList!=null && callbackParamList.size()>0) {
                         doCallback(callbackParamList);
                     }
@@ -101,7 +99,6 @@ public class TriggerCallbackThread {
         triggerCallbackThread.setName("xxl-job, executor TriggerCallbackThread");
         triggerCallbackThread.start();
 
-
         // retry
         triggerRetryCallbackThread = new Thread(new Runnable() {
             @Override
@@ -113,7 +110,6 @@ public class TriggerCallbackThread {
                         if (!toStop) {
                             logger.error(e.getMessage(), e);
                         }
-
                     }
                     try {
                         TimeUnit.SECONDS.sleep(RegistryConfig.BEAT_TIMEOUT);
@@ -128,12 +124,13 @@ public class TriggerCallbackThread {
         });
         triggerRetryCallbackThread.setDaemon(true);
         triggerRetryCallbackThread.start();
-
     }
+
     public void toStop(){
         toStop = true;
         // stop callback, interrupt and wait
-        if (triggerCallbackThread != null) {    // support empty admin address
+        if (triggerCallbackThread != null) {
+            // support empty admin address
             triggerCallbackThread.interrupt();
             try {
                 triggerCallbackThread.join();
@@ -151,7 +148,6 @@ public class TriggerCallbackThread {
                 logger.error(e.getMessage(), e);
             }
         }
-
     }
 
     /**
@@ -164,7 +160,7 @@ public class TriggerCallbackThread {
         for (AdminBiz adminBiz: XxlJobExecutor.getAdminBizList()) {
             try {
                 ReturnT<String> callbackResult = adminBiz.callback(callbackParamList);
-                if (callbackResult!=null && ReturnT.SUCCESS_CODE == callbackResult.getCode()) {
+                if (callbackResult != null && ReturnT.SUCCESS_CODE == callbackResult.getCode()) {
                     callbackLog(callbackParamList, "<br>----------- xxl-job job callback finish.");
                     callbackRet = true;
                     break;
@@ -191,7 +187,6 @@ public class TriggerCallbackThread {
         }
     }
 
-
     // ---------------------- fail-callback file ----------------------
 
     private static String failCallbackFilePath = XxlJobFileAppender.getLogPath().concat(File.separator).concat("callbacklog").concat(File.separator);
@@ -199,7 +194,7 @@ public class TriggerCallbackThread {
 
     private void appendFailCallbackFile(List<HandleCallbackParam> callbackParamList){
         // valid
-        if (callbackParamList==null || callbackParamList.size()==0) {
+        if (callbackParamList == null || callbackParamList.size() == 0) {
             return;
         }
 
@@ -209,7 +204,8 @@ public class TriggerCallbackThread {
         File callbackLogFile = new File(failCallbackFileName.replace("{x}", String.valueOf(System.currentTimeMillis())));
         if (callbackLogFile.exists()) {
             for (int i = 0; i < 100; i++) {
-                callbackLogFile = new File(failCallbackFileName.replace("{x}", String.valueOf(System.currentTimeMillis()).concat("-").concat(String.valueOf(i)) ));
+                callbackLogFile = new File(failCallbackFileName.replace("{x}",
+                        String.valueOf(System.currentTimeMillis()).concat("-").concat(String.valueOf(i)) ));
                 if (!callbackLogFile.exists()) {
                     break;
                 }
@@ -219,7 +215,6 @@ public class TriggerCallbackThread {
     }
 
     private void retryFailCallbackFile(){
-
         // valid
         File callbackLogPath = new File(failCallbackFilePath);
         if (!callbackLogPath.exists()) {
@@ -233,14 +228,13 @@ public class TriggerCallbackThread {
         }
 
         // load and clear file, retry
-        for (File callbaclLogFile: callbackLogPath.listFiles()) {
-            byte[] callbackParamList_bytes = FileUtil.readFileContent(callbaclLogFile);
-            List<HandleCallbackParam> callbackParamList = (List<HandleCallbackParam>) XxlJobExecutor.getSerializer().deserialize(callbackParamList_bytes, HandleCallbackParam.class);
+        for (File callbackLogFile: callbackLogPath.listFiles()) {
+            byte[] callbackParamList_bytes = FileUtil.readFileContent(callbackLogFile);
+            List<HandleCallbackParam> callbackParamList = (List<HandleCallbackParam>) XxlJobExecutor.getSerializer()
+                    .deserialize(callbackParamList_bytes, HandleCallbackParam.class);
 
-            callbaclLogFile.delete();
+            callbackLogFile.delete();
             doCallback(callbackParamList);
         }
-
     }
-
 }

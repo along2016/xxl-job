@@ -10,8 +10,8 @@ public class ShardingUtil {
 
     public static class ShardingVO {
 
-        private int index;  // sharding index
-        private int total;  // sharding total
+        private int index;
+        private int total;
 
         public ShardingVO(int index, int total) {
             this.index = index;

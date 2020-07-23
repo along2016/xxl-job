@@ -19,6 +19,7 @@ import java.util.Map;
 public class DateUtil {
 
     // ---------------------- format parse ----------------------
+
     private static Logger logger = LoggerFactory.getLogger(DateUtil.class);
 
     private static final String DATE_FORMAT = "yyyy-MM-dd";
@@ -26,23 +27,22 @@ public class DateUtil {
 
     private static ThreadLocal<Map<String, DateFormat>> dateFormatThreadLocal = new ThreadLocal<Map<String, DateFormat>>();
     private static DateFormat getDateFormat(String pattern) {
-        if (pattern==null || pattern.trim().length()==0) {
+        if (pattern == null || pattern.trim().length() == 0) {
             throw new IllegalArgumentException("pattern cannot be empty.");
         }
 
         Map<String, DateFormat> dateFormatMap = dateFormatThreadLocal.get();
-        if(dateFormatMap!=null && dateFormatMap.containsKey(pattern)){
+        if(dateFormatMap != null && dateFormatMap.containsKey(pattern)){
             return dateFormatMap.get(pattern);
         }
 
         synchronized (dateFormatThreadLocal) {
             if (dateFormatMap == null) {
-                dateFormatMap = new HashMap<String, DateFormat>();
+                dateFormatMap = new HashMap<>();
             }
             dateFormatMap.put(pattern, new SimpleDateFormat(pattern));
             dateFormatThreadLocal.set(dateFormatMap);
         }
-
         return dateFormatMap.get(pattern);
     }
 
@@ -120,7 +120,6 @@ public class DateUtil {
         }
     }
 
-
     // ---------------------- add date ----------------------
 
     public static Date addDays(final Date date, final int amount) {
@@ -144,5 +143,4 @@ public class DateUtil {
         c.add(calendarField, amount);
         return c.getTime();
     }
-
 }
