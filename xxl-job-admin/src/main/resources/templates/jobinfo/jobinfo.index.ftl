@@ -77,12 +77,12 @@
 					                	<th name="jobGroup" >${I18n.job_info_field_job_group}</th>
 					                  	<th name="jobDesc" >${I18n.job_info_field_job_desc}</th>
                                         <th name="glueType" >${I18n.job_info_field_glue_type}</th>
-					                  	<th name="executorParam" >${I18n.jobinfo_field_executorparam}</th>
+					                  	<th name="executorParam" >${I18n.job_info_field_executor_param}</th>
                                         <th name="jobCron" >Cron</th>
 					                  	<th name="addTime" >addTime</th>
 					                  	<th name="updateTime" >updateTime</th>
 					                  	<th name="author" >${I18n.job_info_field_author}</th>
-					                  	<th name="alarmEmail" >${I18n.jobinfo_field_alarmemail}</th>
+					                  	<th name="alarmEmail" >${I18n.job_info_field_alarm_email}</th>
 					                  	<th name="triggerStatus" >${I18n.system_status}</th>
 					                  	<th>${I18n.system_opt}</th>
 					                </tr>
@@ -167,13 +167,13 @@
 					<div class="form-group">
                         <label for="lastname" class="col-sm-2 control-label">${I18n.job_info_field_author}<font color="red">*</font></label>
                         <div class="col-sm-4"><input type="text" class="form-control" name="author" placeholder="${I18n.system_please_input}${I18n.job_info_field_author}" maxlength="50" ></div>
-                        <label for="lastname" class="col-sm-2 control-label">${I18n.jobinfo_field_alarmemail}<font color="black">*</font></label>
-                        <div class="col-sm-4"><input type="text" class="form-control" name="alarmEmail" placeholder="${I18n.jobinfo_field_alarmemail_placeholder}" maxlength="100" ></div>
+                        <label for="lastname" class="col-sm-2 control-label">${I18n.job_info_field_alarm_email}<font color="black">*</font></label>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="alarmEmail" placeholder="${I18n.job_info_field_alarm_email}" maxlength="100" ></div>
 					</div>
                     <div class="form-group">
-                        <label for="firstname" class="col-sm-2 control-label">${I18n.jobinfo_field_executorparam}<font color="black">*</font></label>
+                        <label for="firstname" class="col-sm-2 control-label">${I18n.job_info_field_executor_param}<font color="black">*</font></label>
                         <div class="col-sm-10">
-                            <textarea class="textarea form-control" name="executorParam" placeholder="${I18n.system_please_input}${I18n.jobinfo_field_executorparam}" maxlength="512" style="height: 63px; line-height: 1.2;"></textarea>
+                            <textarea class="textarea form-control" name="executorParam" placeholder="${I18n.system_please_input}${I18n.job_info_field_executor_param}" maxlength="512" style="height: 63px; line-height: 1.2;"></textarea>
 						</div>
                     </div>
 
@@ -209,7 +209,7 @@ public class DemoGlueJobHandler extends IJobHandler {
 echo "xxl-job: hello shell"
 
 echo "${I18n.jobinfo_script_location}：$0"
-echo "${I18n.jobinfo_field_executorparam}：$1"
+echo "${I18n.job_info_field_executor_param}：$1"
 echo "${I18n.jobinfo_shard_index} = $2"
 echo "${I18n.jobinfo_shard_total} = $3"
 <#--echo "参数数量：$#"
@@ -231,7 +231,7 @@ import sys
 print "xxl-job: hello python"
 
 print "${I18n.jobinfo_script_location}：", sys.argv[0]
-print "${I18n.jobinfo_field_executorparam}：", sys.argv[1]
+print "${I18n.job_info_field_executor_param}：", sys.argv[1]
 print "${I18n.jobinfo_shard_index}：", sys.argv[2]
 print "${I18n.jobinfo_shard_total}：", sys.argv[3]
 
@@ -245,7 +245,7 @@ exit(0)
     echo "xxl-job: hello php  \n";
 
     echo "${I18n.jobinfo_script_location}：$argv[0]  \n";
-    echo "${I18n.jobinfo_field_executorparam}：$argv[1]  \n";
+    echo "${I18n.job_info_field_executor_param}：$argv[1]  \n";
     echo "${I18n.jobinfo_shard_index} = $argv[2]  \n";
     echo "${I18n.jobinfo_shard_total} = $argv[3]  \n";
 
@@ -261,7 +261,7 @@ console.log("xxl-job: hello nodejs")
 var arguments = process.argv
 
 console.log("${I18n.jobinfo_script_location}: " + arguments[1])
-console.log("${I18n.jobinfo_field_executorparam}: " + arguments[2])
+console.log("${I18n.job_info_field_executor_param}: " + arguments[2])
 console.log("${I18n.jobinfo_shard_index}: " + arguments[3])
 console.log("${I18n.jobinfo_shard_total}: " + arguments[4])
 
@@ -272,7 +272,7 @@ process.exit(0)
 Write-Host "xxl-job: hello powershell"
 
 Write-Host "${I18n.jobinfo_script_location}: " $MyInvocation.MyCommand.Definition
-Write-Host "${I18n.jobinfo_field_executorparam}: "
+Write-Host "${I18n.job_info_field_executor_param}: "
 	if ($args.Count -gt 2) { $args[0..($args.Count-3)] }
 Write-Host "${I18n.jobinfo_shard_index}: " $args[$args.Count-2]
 Write-Host "${I18n.jobinfo_shard_total}: " $args[$args.Count-1]
@@ -352,13 +352,13 @@ exit 0
                     <div class="form-group">
                         <label for="lastname" class="col-sm-2 control-label">${I18n.job_info_field_author}<font color="red">*</font></label>
                         <div class="col-sm-4"><input type="text" class="form-control" name="author" placeholder="${I18n.system_please_input}${I18n.job_info_field_author}" maxlength="50" ></div>
-                        <label for="lastname" class="col-sm-2 control-label">${I18n.jobinfo_field_alarmemail}<font color="black">*</font></label>
-                        <div class="col-sm-4"><input type="text" class="form-control" name="alarmEmail" placeholder="${I18n.jobinfo_field_alarmemail_placeholder}" maxlength="100" ></div>
+                        <label for="lastname" class="col-sm-2 control-label">${I18n.job_info_field_alarm_email}<font color="black">*</font></label>
+                        <div class="col-sm-4"><input type="text" class="form-control" name="alarmEmail" placeholder="${I18n.job_info_field_alarm_email_placeholder}" maxlength="100" ></div>
                     </div>
                     <div class="form-group">
-                        <label for="firstname" class="col-sm-2 control-label">${I18n.jobinfo_field_executorparam}<font color="black">*</font></label>
+                        <label for="firstname" class="col-sm-2 control-label">${I18n.job_info_field_executor_param}<font color="black">*</font></label>
                         <div class="col-sm-10">
-                            <textarea class="textarea form-control" name="executorParam" placeholder="${I18n.system_please_input}${I18n.jobinfo_field_executorparam}" maxlength="512" style="height: 63px; line-height: 1.2;"></textarea>
+                            <textarea class="textarea form-control" name="executorParam" placeholder="${I18n.system_please_input}${I18n.job_info_field_executor_param}" maxlength="512" style="height: 63px; line-height: 1.2;"></textarea>
 						</div>
                     </div>
 
@@ -387,10 +387,10 @@ exit 0
             <div class="modal-body">
                 <form class="form-horizontal form" role="form" >
                     <div class="form-group">
-                        <label for="firstname" class="col-sm-2 control-label">${I18n.jobinfo_field_executorparam}<font color="black">*</font></label>
+                        <label for="firstname" class="col-sm-2 control-label">${I18n.job_info_field_executor_param}<font color="black">*</font></label>
                         <div class="col-sm-10">
                             <textarea class="textarea form-control" name="executorParam"
-                                      placeholder="${I18n.system_please_input}${I18n.jobinfo_field_executorparam}"
+                                      placeholder="${I18n.system_please_input}${I18n.job_info_field_executor_param}"
                                       maxlength="512" style="height: 63px; line-height: 1.2;"></textarea>
                         </div>
                     </div>

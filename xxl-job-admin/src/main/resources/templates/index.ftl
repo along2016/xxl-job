@@ -79,13 +79,13 @@
                         <span class="info-box-icon"><i class="fa ion-ios-settings-strong"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">${I18n.job_dashboard_jobgroup_num}</span>
+                            <span class="info-box-text">${I18n.job_dashboard_job_group_num}</span>
                             <span class="info-box-number">${executorCount}</span>
 
                             <div class="progress">
                                 <div class="progress-bar" style="width: 100%"></div>
                             </div>
-                            <span class="progress-description">${I18n.job_dashboard_jobgroup_num_tip}</span>
+                            <span class="progress-description">${I18n.job_dashboard_job_group_num}</span>
                         </div>
                     </div>
                 </div>

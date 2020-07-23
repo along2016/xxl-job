@@ -63,7 +63,7 @@ $(function () {
                     layer.open({
                         title: I18n.system_tips ,
                         btn: [ I18n.system_ok ],
-                        content: (data.msg || I18n.job_dashboard_report_loaddata_fail ),
+                        content: (data.msg || I18n.job_dashboard_report_load_data_fail),
                         icon: '2'
                     });
                 }
