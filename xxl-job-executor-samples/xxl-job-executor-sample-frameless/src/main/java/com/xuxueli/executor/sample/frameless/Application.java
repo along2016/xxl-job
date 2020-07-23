@@ -13,7 +13,6 @@ public class Application {
     private static Logger logger = LoggerFactory.getLogger(Application.class);
 
     public static void main(String[] args) {
-
         try {
             // start
             FrameLessXxlJobConfig.getInstance().initXxlJobExecutor();
@@ -25,9 +24,7 @@ public class Application {
             logger.error(e.getMessage(), e);
         } finally {
             // destroy
-            FrameLessXxlJobConfig.getInstance().destoryXxlJobExecutor();
+            FrameLessXxlJobConfig.getInstance().destroyXxlJobExecutor();
         }
-
     }
-
 }
