@@ -291,7 +291,7 @@ exit 0
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
-            	<h4 class="modal-title" >${I18n.jobinfo_field_update}</h4>
+            	<h4 class="modal-title" >${I18n.job_info_field_update}</h4>
          	</div>
          	<div class="modal-body">
 				<form class="form-horizontal form" role="form" >
