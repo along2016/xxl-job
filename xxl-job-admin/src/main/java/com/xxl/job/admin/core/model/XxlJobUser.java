@@ -8,10 +8,25 @@ import org.springframework.util.StringUtils;
 public class XxlJobUser {
 	
 	private int id;
-	private String username;		// 账号
-	private String password;		// 密码
-	private int role;				// 角色：0-普通用户、1-管理员
-	private String permission;	// 权限：执行器ID列表，多个逗号分割
+	/**
+	 * 账号
+	 */
+	private String username;
+
+	/**
+	 * 密码
+	 */
+	private String password;
+
+	/**
+	 * 角色：0-普通用户、1-管理员
+	 */
+	private int role;
+
+	/**
+	 * 权限：执行器ID列表，多个逗号分割
+	 */
+	private String permission;
 
 	public int getId() {
 		return id;
@@ -53,7 +68,6 @@ public class XxlJobUser {
 		this.permission = permission;
 	}
 
-	// plugin
 	public boolean validPermission(int jobGroup){
 		if (this.role == 1) {
 			return true;
@@ -67,7 +81,5 @@ public class XxlJobUser {
 			}
 			return false;
 		}
-
 	}
-
 }

@@ -9,29 +9,39 @@ import java.util.Date;
 public class XxlJobLog {
 	
 	private long id;
-	
-	// job info
+
+	/**
+	 * job info
+	 */
 	private int jobGroup;
 	private int jobId;
 
-	// execute info
+	/**
+	 * execute info
+	 */
 	private String executorAddress;
 	private String executorHandler;
 	private String executorParam;
 	private String executorShardingParam;
 	private int executorFailRetryCount;
-	
-	// trigger info
+
+	/**
+	 * trigger info
+	 */
 	private Date triggerTime;
 	private int triggerCode;
 	private String triggerMsg;
-	
-	// handle info
+
+	/**
+	 * handle info
+	 */
 	private Date handleTime;
 	private int handleCode;
 	private String handleMsg;
 
-	// alarm info
+	/**
+	 * alarm info
+	 */
 	private int alarmStatus;
 
 	public long getId() {

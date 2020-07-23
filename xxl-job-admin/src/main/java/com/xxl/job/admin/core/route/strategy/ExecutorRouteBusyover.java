@@ -19,15 +19,15 @@ public class ExecutorRouteBusyover extends ExecutorRouter {
         StringBuffer idleBeatResultSB = new StringBuffer();
         for (String address : addressList) {
             // beat
-            ReturnT<String> idleBeatResult = null;
+            ReturnT<String> idleBeatResult;
             try {
                 ExecutorBiz executorBiz = XxlJobScheduler.getExecutorBiz(address);
                 idleBeatResult = executorBiz.idleBeat(triggerParam.getJobId());
             } catch (Exception e) {
                 logger.error(e.getMessage(), e);
-                idleBeatResult = new ReturnT<String>(ReturnT.FAIL_CODE, ""+e );
+                idleBeatResult = new ReturnT<>(ReturnT.FAIL_CODE, ""+e );
             }
-            idleBeatResultSB.append( (idleBeatResultSB.length()>0)?"<br><br>":"")
+            idleBeatResultSB.append( (idleBeatResultSB.length() > 0)?"<br><br>":"")
                     .append(I18nUtil.getString("job_conf_idleBeat") + "：")
                     .append("<br>address：").append(address)
                     .append("<br>code：").append(idleBeatResult.getCode())
@@ -40,8 +40,6 @@ public class ExecutorRouteBusyover extends ExecutorRouter {
                 return idleBeatResult;
             }
         }
-
-        return new ReturnT<String>(ReturnT.FAIL_CODE, idleBeatResultSB.toString());
+        return new ReturnT<>(ReturnT.FAIL_CODE, idleBeatResultSB.toString());
     }
-
 }
