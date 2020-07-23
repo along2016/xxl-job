@@ -16,13 +16,13 @@ import java.io.File;
 public class ScriptJobHandler extends IJobHandler {
 
     private int jobId;
-    private long glueUpdatetime;
+    private long glueUpdateTime;
     private String gluesource;
     private GlueTypeEnum glueType;
 
-    public ScriptJobHandler(int jobId, long glueUpdatetime, String gluesource, GlueTypeEnum glueType){
+    public ScriptJobHandler(int jobId, long glueUpdateTime, String gluesource, GlueTypeEnum glueType){
         this.jobId = jobId;
-        this.glueUpdatetime = glueUpdatetime;
+        this.glueUpdateTime = glueUpdateTime;
         this.gluesource = gluesource;
         this.glueType = glueType;
 
@@ -41,15 +41,15 @@ public class ScriptJobHandler extends IJobHandler {
 
     }
 
-    public long getGlueUpdatetime() {
-        return glueUpdatetime;
+    public long getGlueUpdateTime() {
+        return glueUpdateTime;
     }
 
     @Override
     public ReturnT<String> execute(String param) throws Exception {
 
         if (!glueType.isScript()) {
-            return new ReturnT<String>(IJobHandler.FAIL.getCode(), "glueType["+ glueType +"] invalid.");
+            return new ReturnT<>(IJobHandler.FAIL.getCode(), "glueType["+ glueType +"] invalid.");
         }
 
         // cmd
@@ -60,7 +60,7 @@ public class ScriptJobHandler extends IJobHandler {
                 .concat(File.separator)
                 .concat(String.valueOf(jobId))
                 .concat("_")
-                .concat(String.valueOf(glueUpdatetime))
+                .concat(String.valueOf(glueUpdateTime))
                 .concat(glueType.getSuffix());
         File scriptFile = new File(scriptFileName);
         if (!scriptFile.exists()) {
@@ -84,7 +84,7 @@ public class ScriptJobHandler extends IJobHandler {
         if (exitValue == 0) {
             return IJobHandler.SUCCESS;
         } else {
-            return new ReturnT<String>(IJobHandler.FAIL.getCode(), "script exit value("+exitValue+") is failed");
+            return new ReturnT<>(IJobHandler.FAIL.getCode(), "script exit value("+exitValue+") is failed");
         }
 
     }

@@ -10,19 +10,19 @@ import com.xxl.job.core.log.XxlJobLogger;
  */
 public class GlueJobHandler extends IJobHandler {
 
-	private long glueUpdatetime;
+	private long glueUpdateTime;
 	private IJobHandler jobHandler;
-	public GlueJobHandler(IJobHandler jobHandler, long glueUpdatetime) {
+	public GlueJobHandler(IJobHandler jobHandler, long glueUpdateTime) {
 		this.jobHandler = jobHandler;
-		this.glueUpdatetime = glueUpdatetime;
+		this.glueUpdateTime = glueUpdateTime;
 	}
-	public long getGlueUpdatetime() {
-		return glueUpdatetime;
+	public long getGlueUpdateTime() {
+		return glueUpdateTime;
 	}
 
 	@Override
 	public ReturnT<String> execute(String param) throws Exception {
-		XxlJobLogger.log("----------- glue.version:"+ glueUpdatetime +" -----------");
+		XxlJobLogger.log("----------- glue.version:"+ glueUpdateTime +" -----------");
 		return jobHandler.execute(param);
 	}
 

@@ -123,7 +123,7 @@ public class XxlJobTrigger {
         triggerParam.setLogDateTim(jobLog.getTriggerTime().getTime());
         triggerParam.setGlueType(jobInfo.getGlueType());
         triggerParam.setGlueSource(jobInfo.getGlueSource());
-        triggerParam.setGlueUpdatetime(jobInfo.getGlueUpdatetime().getTime());
+        triggerParam.setGlueUpdateTime(jobInfo.getGlueUpdateTime().getTime());
         triggerParam.setBroadcastIndex(index);
         triggerParam.setBroadcastTotal(total);
 

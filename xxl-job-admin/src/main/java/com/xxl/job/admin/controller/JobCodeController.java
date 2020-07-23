@@ -71,7 +71,7 @@ public class JobCodeController {
 		// update new code
 		exists_jobInfo.setGlueSource(glueSource);
 		exists_jobInfo.setGlueRemark(glueRemark);
-		exists_jobInfo.setGlueUpdatetime(new Date());
+		exists_jobInfo.setGlueUpdateTime(new Date());
 		xxlJobInfoDao.update(exists_jobInfo);
 
 		// log old code
