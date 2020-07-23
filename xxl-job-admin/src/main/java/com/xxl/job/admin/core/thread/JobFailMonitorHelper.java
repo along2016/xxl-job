@@ -58,8 +58,10 @@ public class JobFailMonitorHelper {
 
 								// 1、fail retry monitor
 								if (log.getExecutorFailRetryCount() > 0) {
-									JobTriggerPoolHelper.trigger(log.getJobId(), TriggerTypeEnum.RETRY, (log.getExecutorFailRetryCount()-1), log.getExecutorShardingParam(), null);
-									String retryMsg = "<br><br><span style=\"color:#F39C12;\" > >>>>>>>>>>>"+ I18nUtil.getString("job_conf_trigger_type_retry") +"<<<<<<<<<<< </span><br>";
+									JobTriggerPoolHelper.trigger(log.getJobId(), TriggerTypeEnum.RETRY,
+											(log.getExecutorFailRetryCount() - 1), log.getExecutorShardingParam(), null);
+									String retryMsg = "<br><br><span style=\"color:#F39C12;\" > >>>>>>>>>>>"
+											+ I18nUtil.getString("job_conf_trigger_type_retry") + "<<<<<<<<<<< </span><br>";
 									log.setTriggerMsg(log.getTriggerMsg() + retryMsg);
 									XxlJobAdminConfig.getAdminConfig().getXxlJobLogDao().updateTriggerInfo(log);
 								}
@@ -67,7 +69,7 @@ public class JobFailMonitorHelper {
 								// 2、fail alarm monitor
 								// 告警状态：0-默认、-1=锁定状态、1-无需告警、2-告警成功、3-告警失败
 								int newAlarmStatus;
-								if (info!=null && info.getAlarmEmail()!=null && info.getAlarmEmail().trim().length()>0) {
+								if (info != null && info.getAlarmEmail() != null && info.getAlarmEmail().trim().length()>0) {
 									boolean alarmResult;
 									try {
 										alarmResult = failAlarm(info, log);
@@ -144,14 +146,14 @@ public class JobFailMonitorHelper {
 		boolean alarmResult = true;
 
 		// send monitor email
-		if (info!=null && info.getAlarmEmail()!=null && info.getAlarmEmail().trim().length()>0) {
+		if (info != null && info.getAlarmEmail() != null && info.getAlarmEmail().trim().length() > 0) {
 
 			// alarmContent
 			String alarmContent = "Alarm Job LogId=" + jobLog.getId();
 			if (jobLog.getTriggerCode() != ReturnT.SUCCESS_CODE) {
 				alarmContent += "<br>TriggerMsg=<br>" + jobLog.getTriggerMsg();
 			}
-			if (jobLog.getHandleCode()>0 && jobLog.getHandleCode() != ReturnT.SUCCESS_CODE) {
+			if (jobLog.getHandleCode() > 0 && jobLog.getHandleCode() != ReturnT.SUCCESS_CODE) {
 				alarmContent += "<br>HandleCode=" + jobLog.getHandleMsg();
 			}
 

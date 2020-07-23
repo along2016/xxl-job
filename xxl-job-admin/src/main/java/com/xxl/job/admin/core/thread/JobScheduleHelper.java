@@ -243,7 +243,7 @@ public class JobScheduleHelper {
 
                         // ring trigger
                         logger.debug(">>>>>>>>>>> xxl-job, time-ring beat : " + nowSecond + " = " + Arrays.asList(ringItemData) );
-                        if (ringItemData!=null && ringItemData.size()>0) {
+                        if (ringItemData != null && ringItemData.size()>0) {
                             // do trigger
                             for (int jobId: ringItemData) {
                                 // do trigger
@@ -284,7 +284,7 @@ public class JobScheduleHelper {
         }
         ringItemData.add(jobId);
 
-        logger.debug(">>>>>>>>>>> xxl-job, shecule push time-ring : " + ringSecond + " = " + Arrays.asList(ringItemData) );
+        logger.debug(">>>>>>>>>>> xxl-job, schedule push time-ring : " + ringSecond + " = " + Arrays.asList(ringItemData) );
     }
 
     public void toStop(){

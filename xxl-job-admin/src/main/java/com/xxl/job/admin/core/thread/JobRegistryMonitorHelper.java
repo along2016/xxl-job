@@ -35,24 +35,24 @@ public class JobRegistryMonitorHelper {
 					try {
 						// auto registry group
 						List<XxlJobGroup> groupList = XxlJobAdminConfig.getAdminConfig().getXxlJobGroupDao().findByAddressType(0);
-						if (groupList!=null && !groupList.isEmpty()) {
+						if (groupList != null && !groupList.isEmpty()) {
 
 							// remove dead address (admin/executor)
 							List<Integer> ids = XxlJobAdminConfig.getAdminConfig().getXxlJobRegistryDao().findDead(RegistryConfig.DEAD_TIMEOUT);
-							if (ids!=null && ids.size()>0) {
+							if (ids != null && ids.size()>0) {
 								XxlJobAdminConfig.getAdminConfig().getXxlJobRegistryDao().removeDead(ids);
 							}
 
 							// fresh online address (admin/executor)
-							HashMap<String, List<String>> appAddressMap = new HashMap<String, List<String>>();
+							HashMap<String, List<String>> appAddressMap = new HashMap<>();
 							List<XxlJobRegistry> list = XxlJobAdminConfig.getAdminConfig().getXxlJobRegistryDao().findAll(RegistryConfig.DEAD_TIMEOUT);
 							if (list != null) {
-								for (XxlJobRegistry item: list) {
+								for (XxlJobRegistry item : list) {
 									if (RegistryConfig.RegistType.EXECUTOR.name().equals(item.getRegistryGroup())) {
 										String appName = item.getRegistryKey();
 										List<String> registryList = appAddressMap.get(appName);
 										if (registryList == null) {
-											registryList = new ArrayList<String>();
+											registryList = new ArrayList<>();
 										}
 
 										if (!registryList.contains(item.getRegistryValue())) {
@@ -110,5 +110,4 @@ public class JobRegistryMonitorHelper {
 			logger.error(e.getMessage(), e);
 		}
 	}
-
 }

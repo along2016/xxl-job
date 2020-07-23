@@ -48,7 +48,7 @@ public class XxlJobTrigger {
         if (executorParam != null) {
             jobInfo.setExecutorParam(executorParam);
         }
-        int finalFailRetryCount = failRetryCount>=0?failRetryCount:jobInfo.getExecutorFailRetryCount();
+        int finalFailRetryCount = failRetryCount >= 0 ? failRetryCount : jobInfo.getExecutorFailRetryCount();
         XxlJobGroup group = XxlJobAdminConfig.getAdminConfig().getXxlJobGroupDao().load(jobInfo.getJobGroup());
 
         // sharding param
@@ -62,8 +62,8 @@ public class XxlJobTrigger {
             }
         }
         if (ExecutorRouteStrategyEnum.SHARDING_BROADCAST==ExecutorRouteStrategyEnum.match(jobInfo.getExecutorRouteStrategy(), null)
-                && group.getRegistryList()!=null && !group.getRegistryList().isEmpty()
-                && shardingParam==null) {
+                && group.getRegistryList() != null && !group.getRegistryList().isEmpty()
+                && shardingParam == null) {
             for (int i = 0; i < group.getRegistryList().size(); i++) {
                 processTrigger(group, jobInfo, finalFailRetryCount, triggerType, i, group.getRegistryList().size());
             }
@@ -73,7 +73,6 @@ public class XxlJobTrigger {
             }
             processTrigger(group, jobInfo, finalFailRetryCount, triggerType, shardingParam[0], shardingParam[1]);
         }
-
     }
 
     private static boolean isNumeric(String str){
@@ -170,8 +169,8 @@ public class XxlJobTrigger {
         triggerMsgSb.append("<br>").append(I18nUtil.getString("job_info_field_timeout")).append("：").append(jobInfo.getExecutorTimeout());
         triggerMsgSb.append("<br>").append(I18nUtil.getString("job_info_field_executorFailRetryCount")).append("：").append(finalFailRetryCount);
 
-        triggerMsgSb.append("<br><br><span style=\"color:#00c0ef;\" > >>>>>>>>>>>"+ I18nUtil.getString("job_conf_trigger_run") +"<<<<<<<<<<< </span><br>")
-                .append((routeAddressResult!=null&&routeAddressResult.getMsg()!=null)?routeAddressResult.getMsg()+"<br><br>":"").append(triggerResult.getMsg()!=null?triggerResult.getMsg():"");
+        triggerMsgSb.append("<br><br><span style=\"color:#00c0ef;\" > >>>>>>>>>>>" + I18nUtil.getString("job_conf_trigger_run") + "<<<<<<<<<<< </span><br>")
+                .append((routeAddressResult != null && routeAddressResult.getMsg() != null) ? routeAddressResult.getMsg() + "<br><br>":"").append(triggerResult.getMsg() != null ? triggerResult.getMsg():"");
 
         // 6、save log trigger-info
         jobLog.setExecutorAddress(address);
@@ -210,5 +209,4 @@ public class XxlJobTrigger {
         runResult.setMsg(runResultSB.toString());
         return runResult;
     }
-
 }

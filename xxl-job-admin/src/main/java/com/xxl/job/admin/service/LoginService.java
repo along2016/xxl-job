@@ -25,7 +25,6 @@ public class LoginService {
     @Resource
     private XxlJobUserDao xxlJobUserDao;
 
-
     private String makeToken(XxlJobUser xxlJobUser){
         String tokenJson = JacksonUtil.writeValueAsString(xxlJobUser);
         String tokenHex = new BigInteger(tokenJson.getBytes()).toString(16);
@@ -34,7 +33,8 @@ public class LoginService {
     private XxlJobUser parseToken(String tokenHex){
         XxlJobUser xxlJobUser = null;
         if (tokenHex != null) {
-            String tokenJson = new String(new BigInteger(tokenHex, 16).toByteArray());      // username_password(md5)
+            // username_password(md5)
+            String tokenJson = new String(new BigInteger(tokenHex, 16).toByteArray());
             xxlJobUser = JacksonUtil.readValue(tokenJson, XxlJobUser.class);
         }
         return xxlJobUser;
@@ -44,11 +44,11 @@ public class LoginService {
     public ReturnT<String> login(HttpServletRequest request, HttpServletResponse response, String username, String password, boolean ifRemember){
 
         // param
-        if (username==null || username.trim().length()==0 || password==null || password.trim().length()==0){
+        if (username == null || username.trim().length() == 0 || password == null || password.trim().length() == 0){
             return new ReturnT<>(ReturnT.FAIL_CODE, I18nUtil.getString("login_param_empty"));
         }
 
-        // valid passowrd
+        // valid password
         XxlJobUser xxlJobUser = xxlJobUserDao.loadByUserName(username);
         if (xxlJobUser == null) {
             return new ReturnT<>(ReturnT.FAIL_CODE, I18nUtil.getString("login_param_invalid"));
@@ -57,7 +57,6 @@ public class LoginService {
         if (!passwordMd5.equals(xxlJobUser.getPassword())) {
             return new ReturnT<>(ReturnT.FAIL_CODE, I18nUtil.getString("login_param_invalid"));
         }
-
         String loginToken = makeToken(xxlJobUser);
 
         // do login
@@ -102,6 +101,4 @@ public class LoginService {
         }
         return null;
     }
-
-
 }
