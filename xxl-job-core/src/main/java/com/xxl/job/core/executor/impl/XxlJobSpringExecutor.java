@@ -27,7 +27,6 @@ public class XxlJobSpringExecutor extends XxlJobExecutor implements ApplicationC
         // refresh GlueFactory
         GlueFactory.refreshInstance(1);
 
-
         // super start
         super.start();
     }
@@ -46,7 +45,7 @@ public class XxlJobSpringExecutor extends XxlJobExecutor implements ApplicationC
                     String name = serviceBean.getClass().getAnnotation(JobHandler.class).value();
                     IJobHandler handler = (IJobHandler) serviceBean;
                     if (loadJobHandler(name) != null) {
-                        throw new RuntimeException("xxl-job jobhandler naming conflicts.");
+                        throw new RuntimeException("xxl-job jobHandler naming conflicts.");
                     }
                     registJobHandler(name, handler);
                 }
@@ -62,5 +61,4 @@ public class XxlJobSpringExecutor extends XxlJobExecutor implements ApplicationC
     public static ApplicationContext getApplicationContext() {
         return applicationContext;
     }
-
 }
