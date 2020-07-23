@@ -13,7 +13,7 @@ import com.xxl.job.core.util.ShardingUtil;
 public class ShardingJobHandler extends IJobHandler {
 
 	@Override
-	public ReturnT<String> execute(String param) throws Exception {
+	public ReturnT<String> execute(String param) {
 
 		// 分片参数
 		ShardingUtil.ShardingVO shardingVO = ShardingUtil.getShardingVo();
@@ -27,8 +27,6 @@ public class ShardingJobHandler extends IJobHandler {
 				XxlJobLogger.log("第 {} 片, 忽略", i);
 			}
 		}
-
 		return SUCCESS;
 	}
-	
 }
