@@ -74,11 +74,11 @@ $(function() {
 		messages : {
 			appName : {
 				required : I18n.system_please_input+"AppName",
-				rangelength: I18n.jobgroup_field_appName_length ,
+				rangelength: I18n.job_group_field_appName_length ,
 				myValid01: I18n.jobgroup_field_appName_limit
 			},
 			title : {
-				required : I18n.system_please_input + I18n.jobgroup_field_title ,
+				required : I18n.system_please_input + I18n.job_group_field_title ,
 				rangelength: I18n.jobgroup_field_title_length
 			},
 			order : {
@@ -181,11 +181,11 @@ $(function() {
 		messages : {
             appName : {
                 required : I18n.system_please_input+"AppName",
-                rangelength: I18n.jobgroup_field_appName_length ,
+                rangelength: I18n.job_group_field_appName_length ,
                 myValid01: I18n.jobgroup_field_appName_limit
             },
             title : {
-                required : I18n.system_please_input + I18n.jobgroup_field_title ,
+                required : I18n.system_please_input + I18n.job_group_field_title ,
                 rangelength: I18n.jobgroup_field_title_length
             },
             order : {

@@ -113,15 +113,15 @@ public class JobFailMonitorHelper {
 	/**
 	 * email alarm template
 	 */
-	private static final String mailBodyTemplate = "<h5>" + I18nUtil.getString("jobconf_monitor_detail") + "：</span>" +
+	private static final String mailBodyTemplate = "<h5>" + I18nUtil.getString("job_conf_monitor_detail") + "：</span>" +
 			"<table border=\"1\" cellpadding=\"3\" style=\"border-collapse:collapse; width:80%;\" >\n" +
 			"   <thead style=\"font-weight: bold;color: #ffffff;background-color: #ff8c00;\" >" +
 			"      <tr>\n" +
 			"         <td width=\"20%\" >"+ I18nUtil.getString("job_info_field_job_group") +"</td>\n" +
 			"         <td width=\"10%\" >"+ I18nUtil.getString("job_info_field_id") +"</td>\n" +
 			"         <td width=\"20%\" >"+ I18nUtil.getString("job_info_field_job_desc") +"</td>\n" +
-			"         <td width=\"10%\" >"+ I18nUtil.getString("jobconf_monitor_alarm_title") +"</td>\n" +
-			"         <td width=\"40%\" >"+ I18nUtil.getString("jobconf_monitor_alarm_content") +"</td>\n" +
+			"         <td width=\"10%\" >"+ I18nUtil.getString("job_conf_monitor_alarm_title") +"</td>\n" +
+			"         <td width=\"40%\" >"+ I18nUtil.getString("job_conf_monitor_alarm_content") +"</td>\n" +
 			"      </tr>\n" +
 			"   </thead>\n" +
 			"   <tbody>\n" +
@@ -129,7 +129,7 @@ public class JobFailMonitorHelper {
 			"         <td>{0}</td>\n" +
 			"         <td>{1}</td>\n" +
 			"         <td>{2}</td>\n" +
-			"         <td>"+ I18nUtil.getString("jobconf_monitor_alarm_type") +"</td>\n" +
+			"         <td>"+ I18nUtil.getString("job_conf_monitor_alarm_type") +"</td>\n" +
 			"         <td>{3}</td>\n" +
 			"      </tr>\n" +
 			"   </tbody>\n" +
@@ -158,7 +158,7 @@ public class JobFailMonitorHelper {
 			// email info
 			XxlJobGroup group = XxlJobAdminConfig.getAdminConfig().getXxlJobGroupDao().load(Integer.valueOf(info.getJobGroup()));
 			String personal = I18nUtil.getString("admin_name_full");
-			String title = I18nUtil.getString("jobconf_monitor");
+			String title = I18nUtil.getString("job_conf_monitor");
 			String content = MessageFormat.format(mailBodyTemplate,
 					group!=null?group.getTitle():"null",
 					info.getId(),

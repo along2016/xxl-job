@@ -38,7 +38,7 @@
                                         <#--<th name="id" >ID</th>-->
                                         <th name="order" >${I18n.jobgroup_field_order}</th>
                                         <th name="appName" >AppName</th>
-                                        <th name="title" >${I18n.jobgroup_field_title}</th>
+                                        <th name="title" >${I18n.job_group_field_title}</th>
                                         <th name="addressType" >${I18n.jobgroup_field_addressType}</th>
                                         <th name="registryList" >OnLine ${I18n.job_group_field_registryList}</th>
                                         <th name="operate" >${I18n.system_opt}</th>
@@ -103,8 +103,8 @@
                             <div class="col-sm-10"><input type="text" class="form-control" name="appName" placeholder="${I18n.system_please_input}AppName" maxlength="64" ></div>
                         </div>
                         <div class="form-group">
-                            <label for="lastname" class="col-sm-2 control-label">${I18n.jobgroup_field_title}<font color="red">*</font></label>
-                            <div class="col-sm-10"><input type="text" class="form-control" name="title" placeholder="${I18n.system_please_input}${I18n.jobgroup_field_title}" maxlength="12" ></div>
+                            <label for="lastname" class="col-sm-2 control-label">${I18n.job_group_field_title}<font color="red">*</font></label>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="title" placeholder="${I18n.system_please_input}${I18n.job_group_field_title}" maxlength="12" ></div>
                         </div>
                         <div class="form-group">
                             <label for="lastname" class="col-sm-2 control-label">${I18n.jobgroup_field_order}<font color="red">*</font></label>
@@ -151,8 +151,8 @@
                             <div class="col-sm-10"><input type="text" class="form-control" name="appName" placeholder="${I18n.system_please_input}AppName" maxlength="64" ></div>
                         </div>
                         <div class="form-group">
-                            <label for="lastname" class="col-sm-2 control-label">${I18n.jobgroup_field_title}<font color="red">*</font></label>
-                            <div class="col-sm-10"><input type="text" class="form-control" name="title" placeholder="${I18n.system_please_input}${I18n.jobgroup_field_title}" maxlength="12" ></div>
+                            <label for="lastname" class="col-sm-2 control-label">${I18n.job_group_field_title}<font color="red">*</font></label>
+                            <div class="col-sm-10"><input type="text" class="form-control" name="title" placeholder="${I18n.system_please_input}${I18n.job_group_field_title}" maxlength="12" ></div>
                         </div>
                         <div class="form-group">
                             <label for="lastname" class="col-sm-2 control-label">${I18n.jobgroup_field_order}<font color="red">*</font></label>

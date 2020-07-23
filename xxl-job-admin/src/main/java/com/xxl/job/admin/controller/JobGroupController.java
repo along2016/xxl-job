@@ -53,14 +53,14 @@ public class JobGroupController {
 			return new ReturnT<>(ReturnT.FAIL_CODE, (I18nUtil.getString("system_please_input")+"AppName") );
 		}
 		if (xxlJobGroup.getAppName().length() < 4 || xxlJobGroup.getAppName().length() > 64) {
-			return new ReturnT<>(ReturnT.FAIL_CODE, I18nUtil.getString("jobgroup_field_appName_length") );
+			return new ReturnT<>(ReturnT.FAIL_CODE, I18nUtil.getString("job_group_field_appName_length") );
 		}
 		if (xxlJobGroup.getTitle() == null || xxlJobGroup.getTitle().trim().length() ==  0) {
-			return new ReturnT<>(ReturnT.FAIL_CODE, (I18nUtil.getString("system_please_input") + I18nUtil.getString("jobgroup_field_title")) );
+			return new ReturnT<>(ReturnT.FAIL_CODE, (I18nUtil.getString("system_please_input") + I18nUtil.getString("job_group_field_title")) );
 		}
 		if (xxlJobGroup.getAddressType() != 0) {
 			if (xxlJobGroup.getAddressList() == null || xxlJobGroup.getAddressList().trim().length() == 0) {
-				return new ReturnT<>(ReturnT.FAIL_CODE, I18nUtil.getString("jobgroup_field_addressType_limit") );
+				return new ReturnT<>(ReturnT.FAIL_CODE, I18nUtil.getString("job_group_field_addressType_limit") );
 			}
 			String[] addresss = xxlJobGroup.getAddressList().split(",");
 			for (String item : addresss) {
@@ -82,10 +82,10 @@ public class JobGroupController {
 			return new ReturnT<>(ReturnT.FAIL_CODE, (I18nUtil.getString("system_please_input")+"AppName") );
 		}
 		if (xxlJobGroup.getAppName().length() < 4 || xxlJobGroup.getAppName().length() > 64) {
-			return new ReturnT<>(ReturnT.FAIL_CODE, I18nUtil.getString("jobgroup_field_appName_length") );
+			return new ReturnT<>(ReturnT.FAIL_CODE, I18nUtil.getString("job_group_field_appName_length") );
 		}
 		if (xxlJobGroup.getTitle() == null || xxlJobGroup.getTitle().trim().length() == 0) {
-			return new ReturnT<>(ReturnT.FAIL_CODE, (I18nUtil.getString("system_please_input") + I18nUtil.getString("jobgroup_field_title")) );
+			return new ReturnT<>(ReturnT.FAIL_CODE, (I18nUtil.getString("system_please_input") + I18nUtil.getString("job_group_field_title")) );
 		}
 		if (xxlJobGroup.getAddressType() == 0) {
 			// 0=自动注册
@@ -103,7 +103,7 @@ public class JobGroupController {
 		} else {
 			// 1=手动录入
 			if (xxlJobGroup.getAddressList() == null || xxlJobGroup.getAddressList().trim().length() == 0) {
-				return new ReturnT<>(ReturnT.FAIL_CODE, I18nUtil.getString("jobgroup_field_addressType_limit"));
+				return new ReturnT<>(ReturnT.FAIL_CODE, I18nUtil.getString("job_group_field_addressType_limit"));
 			}
 			String[] addresss = xxlJobGroup.getAddressList().split(",");
 			for (String item: addresss) {
