@@ -96,7 +96,7 @@ public class XxlJobFileAppender {
 	public static void appendLog(String logFileName, String appendLog) {
 
 		// log file
-		if (logFileName==null || logFileName.trim().length()==0) {
+		if (logFileName == null || logFileName.trim().length() == 0) {
 			return;
 		}
 		File logFile = new File(logFileName);
