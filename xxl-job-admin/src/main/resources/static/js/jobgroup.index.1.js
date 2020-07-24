@@ -4,7 +4,7 @@ $(function() {
 	$('.remove').on('click', function(){
 		var id = $(this).attr('id');
 
-		layer.confirm( (I18n.system_ok + I18n.jobgroup_del + '？') , {
+		layer.confirm( (I18n.system_ok + I18n.job_group_del + '？') , {
 			icon: 3,
 			title: I18n.system_tips ,
             btn: [ I18n.system_ok, I18n.system_cancel ]
@@ -21,7 +21,7 @@ $(function() {
 						layer.open({
 							title: I18n.system_tips ,
                             btn: [ I18n.system_ok ],
-							content: (I18n.jobgroup_del + I18n.system_success),
+							content: (I18n.job_group_del + I18n.system_success),
 							icon: '1',
 							end: function(layero, index){
 								window.location.reload();
@@ -31,7 +31,7 @@ $(function() {
 						layer.open({
 							title: I18n.system_tips,
                             btn: [ I18n.system_ok ],
-							content: (data.msg || (I18n.jobgroup_del + I18n.system_fail)),
+							content: (data.msg || (I18n.job_group_del + I18n.system_fail)),
 							icon: '2'
 						});
 					}
@@ -46,7 +46,7 @@ $(function() {
 		var length = value.length;
 		var valid = /^[a-z][a-zA-Z0-9-]*$/;
 		return this.optional(element) || valid.test(value);
-	}, I18n.jobgroup_field_appName_limit );
+	}, I18n.job_group_field_appName_limit );
 
 	$('.add').on('click', function(){
 		$('#addModal').modal({backdrop: false, keyboard: false}).modal('show');
@@ -75,16 +75,16 @@ $(function() {
 			appName : {
 				required : I18n.system_please_input+"AppName",
 				rangelength: I18n.job_group_field_appName_length ,
-				myValid01: I18n.jobgroup_field_appName_limit
+				myValid01: I18n.job_group_field_appName_limit
 			},
 			title : {
 				required : I18n.system_please_input + I18n.job_group_field_title ,
-				rangelength: I18n.jobgroup_field_title_length
+				rangelength: I18n.job_group_field_title_length
 			},
 			order : {
-				required : I18n.system_please_input + I18n.jobgroup_field_order ,
-				digits: I18n.jobgroup_field_order_digits ,
-				range: I18n.jobgroup_field_orderrange
+				required : I18n.system_please_input + I18n.job_group_field_order ,
+				digits: I18n.job_group_field_order_digits ,
+				range: I18n.job_group_field_order_range
 			}
 		},
 		highlight : function(element) {
@@ -182,16 +182,16 @@ $(function() {
             appName : {
                 required : I18n.system_please_input+"AppName",
                 rangelength: I18n.job_group_field_appName_length ,
-                myValid01: I18n.jobgroup_field_appName_limit
+                myValid01: I18n.job_group_field_appName_limit
             },
             title : {
                 required : I18n.system_please_input + I18n.job_group_field_title ,
-                rangelength: I18n.jobgroup_field_title_length
+                rangelength: I18n.job_group_field_title_length
             },
             order : {
-                required : I18n.system_please_input + I18n.jobgroup_field_order ,
-                digits: I18n.jobgroup_field_order_digits ,
-                range: I18n.jobgroup_field_orderrange
+                required : I18n.system_please_input + I18n.job_group_field_order ,
+                digits: I18n.job_group_field_order_digits ,
+                range: I18n.job_group_field_order_range
             }
 		},
 		highlight : function(element) {
@@ -234,6 +234,4 @@ $(function() {
 		addModalValidate.resetForm();
 		$("#updateModal .form .form-group").removeClass("has-error");
 	});
-
-	
 });
