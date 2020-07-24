@@ -89,7 +89,7 @@ $(function () {
                    }
                },
                legend: {
-                   data:[I18n.joblog_status_suc, I18n.joblog_status_fail, I18n.joblog_status_running]
+                   data:[I18n.job_log_status_suc, I18n.job_log_status_fail, I18n.job_log_status_running]
                },
                toolbox: {
                    feature: {
@@ -116,14 +116,14 @@ $(function () {
                ],
                series : [
                    {
-                       name:I18n.joblog_status_suc,
+                       name:I18n.job_log_status_suc,
                        type:'line',
                        stack: 'Total',
                        areaStyle: {normal: {}},
                        data: data.content.triggerDayCountSucList
                    },
                    {
-                       name:I18n.joblog_status_fail,
+                       name:I18n.job_log_status_fail,
                        type:'line',
                        stack: 'Total',
                        label: {
@@ -136,7 +136,7 @@ $(function () {
                        data: data.content.triggerDayCountFailList
                    },
                    {
-                       name:I18n.joblog_status_running,
+                       name:I18n.job_log_status_running,
                        type:'line',
                        stack: 'Total',
                        areaStyle: {normal: {}},
@@ -167,7 +167,7 @@ $(function () {
             legend: {
                 orient: 'vertical',
                 left: 'left',
-                data: [I18n.joblog_status_suc, I18n.joblog_status_fail, I18n.joblog_status_running ]
+                data: [I18n.job_log_status_suc, I18n.job_log_status_fail, I18n.job_log_status_running ]
             },
             series : [
                 {
@@ -177,15 +177,15 @@ $(function () {
                     center: ['50%', '60%'],
                     data:[
                         {
-                            name:I18n.joblog_status_suc,
+                            name:I18n.job_log_status_suc,
                             value:data.content.triggerCountSucTotal
                         },
                         {
-                            name:I18n.joblog_status_fail,
+                            name:I18n.job_log_status_fail,
                             value:data.content.triggerCountFailTotal
                         },
                         {
-                            name:I18n.joblog_status_running,
+                            name:I18n.job_log_status_running,
                             value:data.content.triggerCountRunningTotal
                         }
                     ],

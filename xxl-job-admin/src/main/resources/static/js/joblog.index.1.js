@@ -104,7 +104,7 @@ $(function() {
                             }
 
 							var temp = '';
-							temp += I18n.joblog_field_executorAddress + '：' + (row.executorAddress?row.executorAddress:'');
+							temp += I18n.job_log_field_executorAddress + '：' + (row.executorAddress?row.executorAddress:'');
 							temp += jobhandler;
 							temp += '<br>'+ I18n.job_info_field_executor_param +'：' + row.executorParam;
 
@@ -154,11 +154,11 @@ $(function() {
 						"render": function ( data, type, row ) {
                             var html = data;
                             if (data == 200) {
-                                html = '<span style="color: green">'+ I18n.joblog_handleCode_200 +'</span>';
+                                html = '<span style="color: green">'+ I18n.job_log_handleCode_200 +'</span>';
                             } else if (data == 500) {
-                                html = '<span style="color: red">'+ I18n.joblog_handleCode_500 +'</span>';
+                                html = '<span style="color: red">'+ I18n.job_log_handleCode_500 +'</span>';
                             } else if (data == 502) {
-                                html = '<span style="color: red">'+ I18n.joblog_handleCode_502 +'</span>';
+                                html = '<span style="color: red">'+ I18n.job_log_handleCode_502 +'</span>';
                             } else if (data == 0) {
                                 html = '';
                             }
@@ -180,9 +180,9 @@ $(function() {
 	                		// better support expression or string, not function
 	                		return function () {
 		                		if (row.triggerCode == 200 || row.handleCode != 0){
-		                			var temp = '<a href="javascript:;" class="logDetail" _id="'+ row.id +'">'+ I18n.joblog_rolling_log +'</a>';
+		                			var temp = '<a href="javascript:;" class="logDetail" _id="'+ row.id +'">'+ I18n.job_log_rolling_log +'</a>';
 		                			if(row.handleCode == 0){
-		                				temp += '<br><a href="javascript:;" class="logKill" _id="'+ row.id +'" style="color: red;" >'+ I18n.joblog_kill_log +'</a>';
+		                				temp += '<br><a href="javascript:;" class="logKill" _id="'+ row.id +'" style="color: red;" >'+ I18n.job_log_kill_log +'</a>';
 		                			}
 		                			return temp;
 		                		}
@@ -247,7 +247,7 @@ $(function() {
 	$('#joblog_list').on('click', '.logKill', function(){
 		var _id = $(this).attr('_id');
 
-        layer.confirm( (I18n.system_ok + I18n.joblog_kill_log + '?'), {
+        layer.confirm((I18n.system_ok + I18n.job_log_kill_log + '?'), {
         	icon: 3,
 			title: I18n.system_tips ,
             btn: [ I18n.system_ok, I18n.system_cancel ]
@@ -311,7 +311,7 @@ $(function() {
 				layer.open({
 					title: I18n.system_tips ,
                     btn: [ I18n.system_ok ],
-					content: (I18n.joblog_clean_log + I18n.system_success) ,
+					content: (I18n.job_log_clean_log + I18n.system_success) ,
 					icon: '1',
 					end: function(layero, index){
 						logTable.fnDraw();
@@ -321,7 +321,7 @@ $(function() {
 				layer.open({
 					title: I18n.system_tips ,
                     btn: [ I18n.system_ok ],
-					content: (data.msg || (I18n.joblog_clean_log + I18n.system_fail) ),
+					content: (data.msg || (I18n.job_log_clean_log + I18n.system_fail) ),
 					icon: '2'
 				});
 			}

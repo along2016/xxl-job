@@ -3,7 +3,7 @@ $(function() {
     // trigger fail, end
     if ( !(triggerCode == 200 || handleCode != 0) ) {
         $('#logConsoleRunning').hide();
-        $('#logConsole').append('<span style="color: red;">'+ I18n.joblog_rolling_log_triggerfail +'</span>');
+        $('#logConsole').append('<span style="color: red;">'+ I18n.job_log_rolling_log_trigger_fail +'</span>');
         return;
     }
 
@@ -13,7 +13,7 @@ $(function() {
     function pullLog() {
         // pullFailCount, max=20
         if (pullFailCount++ > 20) {
-            logRunStop('<span style="color: red;">'+ I18n.joblog_rolling_log_failoften +'</span>');
+            logRunStop('<span style="color: red;">'+ I18n.job_log_rolling_log_fail_often +'</span>');
             return;
         }
 
