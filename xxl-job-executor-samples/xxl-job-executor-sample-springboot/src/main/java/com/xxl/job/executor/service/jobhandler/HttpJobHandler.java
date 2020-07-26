@@ -45,8 +45,6 @@ public class HttpJobHandler extends IJobHandler {
             // do connection
             connection.connect();
 
-            //Map<String, List<String>> map = connection.getHeaderFields();
-
             // valid StatusCode
             int statusCode = connection.getResponseCode();
             if (statusCode != 200) {
@@ -79,7 +77,5 @@ public class HttpJobHandler extends IJobHandler {
                 XxlJobLogger.log(e2);
             }
         }
-
     }
-
 }

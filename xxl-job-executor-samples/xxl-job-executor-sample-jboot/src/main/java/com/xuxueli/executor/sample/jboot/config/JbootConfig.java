@@ -18,7 +18,7 @@ public class JbootConfig extends JbootAppListenerBase {
 
     private void initXxlJobExecutor() {
 
-        // registry jobhandler
+        // registry jobHandler
         XxlJobExecutor.registJobHandler("demoJobHandler", new DemoJobHandler());
         XxlJobExecutor.registJobHandler("shardingJobHandler", new ShardingJobHandler());
         XxlJobExecutor.registJobHandler("httpJobHandler", new HttpJobHandler());
@@ -44,7 +44,7 @@ public class JbootConfig extends JbootAppListenerBase {
 
     // ---------------------- jboot ----------------------
 
-    private void destoryXxlJobExecutor() {
+    private void destroyXxlJobExecutor() {
         if (xxlJobExecutor != null) {
             xxlJobExecutor.destroy();
         }
@@ -58,7 +58,7 @@ public class JbootConfig extends JbootAppListenerBase {
 
     @Override
     public void onStop() {
-        destoryXxlJobExecutor();
+        destroyXxlJobExecutor();
         super.onStop();
     }
 }
