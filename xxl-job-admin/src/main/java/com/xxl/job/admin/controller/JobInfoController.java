@@ -52,11 +52,11 @@ public class JobInfoController {
 		model.addAttribute("ExecutorBlockStrategyEnum", ExecutorBlockStrategyEnum.values());
 
 		// 执行器列表
-		List<XxlJobGroup> jobGroupList_all =  xxlJobGroupDao.findAll();
+		List<XxlJobGroup> jobGroupList_all = xxlJobGroupDao.findAll();
 
 		// filter group
 		List<XxlJobGroup> jobGroupList = filterJobGroupByRole(request, jobGroupList_all);
-		if (jobGroupList==null || jobGroupList.size()==0) {
+		if (jobGroupList == null || jobGroupList.size() == 0) {
 			throw new XxlJobException(I18nUtil.getString("job_group_empty"));
 		}
 

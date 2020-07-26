@@ -324,7 +324,7 @@ exit 0
                         <div class="col-sm-4">
                             <select class="form-control glueType" name="glueType" disabled >
 							<#list GlueTypeEnum as item>
-                                <option value="${item}" >${item.desc}</option>
+                                <option value="${item}">${item.desc}</option>
 							</#list>
                             </select>
                         </div>
@@ -336,7 +336,7 @@ exit 0
                         <div class="col-sm-4">
                             <select class="form-control" name="executorBlockStrategy" >
 							<#list ExecutorBlockStrategyEnum as item>
-                                <option value="${item}" >${item.title}</option>
+                                <option value="${item}">${item.title}</option>
 							</#list>
                             </select>
                         </div>
