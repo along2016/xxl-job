@@ -66,7 +66,7 @@
 	            </div>
           	</div>
 	    	
-			<div class="row" style="margin-top: 10px;">
+			<div class="row" style="margin-top: 8px;">
 				<div class="col-xs-12">
 					<div class="box">
 			            <div class="box-body" >
@@ -212,12 +212,6 @@ echo "${I18n.job_info_script_location}：$0"
 echo "${I18n.job_info_field_executor_param}：$1"
 echo "${I18n.job_info_shard_index} = $2"
 echo "${I18n.job_info_shard_total} = $3"
-<#--echo "参数数量：$#"
-for param in $*
-do
-    echo "参数 : $param"
-    sleep 1s
-done-->
 
 echo "Good bye!"
 exit 0
