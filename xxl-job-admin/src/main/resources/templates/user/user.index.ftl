@@ -14,9 +14,7 @@
 	<!-- left -->
 	<@netCommon.commonLeft "user" />
 	
-	<!-- Content Wrapper. Contains page content -->
 	<div class="content-wrapper">
-		<!-- Content Header (Page header) -->
 		<section class="content-header">
 			<h1>${I18n.user_manage}</h1>
 		</section>
@@ -49,7 +47,7 @@
 	            </div>
           	</div>
 	    	
-			<div class="row">
+			<div class="row" style="margin-top: 8px;">
 				<div class="col-xs-12">
 					<div class="box">
 			            <div class="box-body" >
